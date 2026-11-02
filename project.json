@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "project": "You&Me",
+  "updatedOn": "2026-11-02",
+  "timezone": "America/Chicago",
+  "applicationRepository": "https://github.com/kaiwanmirza-blip/you-n-me",
+  "inspectedBranch": "main",
+  "inspectedCommit": "74dca7f36e0ae6e4ae31ef55f3ed457a1b36e6de",
+  "dashboardUrl": "https://youme-build-command-center.newclay.chatgpt.site",
+  "dashboardSourceRepository": null,
+  "dashboardSynchronization": "not updated; full ledger and ID mapping unresolved",
+  "currentMilestone": "investor prototype",
+  "delivery": {
+    "requestedId": "YM-01",
+    "title": "Product foundation and acceptance",
+    "status": "complete — documentation gate only",
+    "productApproval": "approved with explicit refinements and deferred decisions",
+    "implementation": "YM-02A frontend scaffold complete locally; product journeys not implemented",
+    "acceptanceExecution": "AC-01–AC-18 specified; all unexecuted",
+    "dashboardIdMapping": "unresolved: dashboard YM-01 has a different title and task structure"
+  },
+  "scope": {
+    "workingJourneys": [
+      "Fitness",
+      "Nutrition"
+    ],
+    "otherAreas": "preview-only",
+    "defaultGuide": "Jane",
+    "selectableGuide": "Kay",
+    "modes": [
+      "guided",
+      "demo",
+      "live"
+    ],
+    "subscriptions": "simulated",
+    "realPayments": false,
+    "jarvis": "separate project"
+  },
+  "records": {
+    "masterPlan": "docs/MASTER_PLAN.md",
+    "deliveryMap": "docs/DELIVERY_MAP.md",
+    "acceptance": "docs/PRODUCT_FOUNDATION_AND_ACCEPTANCE.md",
+    "decisions": "docs/DECISION_LOG.md",
+    "sessions": "docs/SESSION_LOG.md",
+    "storage": "docs/STORAGE_AND_ISOLATION.md",
+    "scaffoldVerification": "docs/YM-02A_VERIFICATION.md"
+  },
+  "recordProvenance": "Local records and scaffold in verified Git checkout; not committed or pushed; original external planning documents unavailable",
+  "futureMilestones": {
+    "status": "proposed and unscheduled",
+    "items": [
+      "private pilot",
+      "product beta",
+      "revenue validation / commercial beta",
+      "launch readiness",
+      "public launch and distribution",
+      "ongoing releases"
+    ]
+  },
+  "storageDecision": {
+    "id": "S-01",
+    "recommendation": "SQLite local / D1 hosted via session-scoped API",
+    "status": "material hosted data-handling change pending review before persistence implementation",
+    "blocks": [
+      "YM-02C"
+    ],
+    "doesNotBlock": [
+      "YM-02A"
+    ]
+  },
+  "nextTask": "YM-02B API foundation and typed contracts — requires separate authorization",
+  "engineeringFoundation": {
+    "id": "YM-02",
+    "status": "In progress",
+    "completionRule": "All subtasks accepted; scaffold alone is insufficient",
+    "subtasks": [
+      {
+        "id": "YM-02A",
+        "title": "Repository and frontend scaffold",
+        "status": "Complete — local verification",
+        "evidence": "docs/YM-02A_VERIFICATION.md",
+        "executor": "Codex in this chat",
+        "responsibility": "Engineering / frontend and repository foundation"
+      },
+      {
+        "id": "YM-02B",
+        "title": "API foundation and typed contracts",
+        "status": "To do"
+      },
+      {
+        "id": "YM-02C",
+        "title": "Migrations and persistence foundation",
+        "status": "To do"
+      },
+      {
+        "id": "YM-02D",
+        "title": "CI and foundation integration",
+        "status": "To do"
+      }
+    ]
+  },
+  "repositoryState": {
+    "branch": "main",
+    "baseCommit": "74dca7f36e0ae6e4ae31ef55f3ed457a1b36e6de",
+    "newCommit": null,
+    "githubSynchronization": "fetched main; no push or PR; local changes only",
+    "dashboardSynchronization": "not updated"
+  }
+}
