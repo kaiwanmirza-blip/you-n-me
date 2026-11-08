@@ -1,5 +1,8 @@
 # YM-01 — Product foundation and acceptance
 
+> Current amendment — 2026-11-04: APP:YM-PREVIEW-01 is authorized and implemented as a NEW design proposal with an in-memory Fitness sample. This bounded exception supersedes earlier blanket UI pauses; it does not approve final visuals, persistence or live AI. See [preview evidence](YM-PREVIEW-01_VERIFICATION.md). Earlier dated entries remain history.
+
+
 Status: YM-01 documentation gate complete on 2026-11-02 (America/Chicago). Product defaults approved by Kaiwan with the refinements below. Storage recommendation S-01 remains explicitly deferred for review before persistence implementation.
 This document specifies intended behavior. No application behavior is implemented or verified by this document.
 
@@ -7,7 +10,7 @@ This document specifies intended behavior. No application behavior is implemente
 
 Confirmed by the user's instructions: investor prototype; Fitness and Nutrition are working journeys; every other area is preview-only; explicit guided/demo/live modes; simulated subscriptions; no real payments; Jane is the default guide and Kay is selectable; guide identity is separate from fictional sample profiles; Jarvis remains separate.
 
-Detailed defaults below are approved except explicitly deferred choices and storage proposal S-01. This is a new baseline, not a reconstruction of the unavailable original master plan. Decision IDs refer to DECISION_LOG.md. Documentation completion is not application acceptance.
+Detailed defaults below are approved except explicitly deferred choices and storage proposal S-01. The later [experience amendment](EXPERIENCE_TO_DELIVERY.md) governs device priorities, original visual-reference fidelity, guide reconciliation and the implementation pause. The scaffold is not approved final product design. This is a new baseline, not a reconstruction of the unavailable original master plan. Decision IDs refer to DECISION_LOG.md. Documentation completion is not application acceptance.
 
 ## First five minutes (P-01)
 
@@ -24,7 +27,7 @@ Onboarding is account-free. Measure Fitness and Nutrition independently, each st
 
 ## Guides, profiles and modes (P-02, P-03)
 
-- Jane is initially selected. Kay is selectable at onboarding and later in profile/settings. Changing guides changes presentation, not the user's profile, plan constraints or completion history.
+- Jane is initially selected. Kay is selectable at onboarding and later in profile/settings. Changing guides preserves the user's profile, plan constraints and completion history. Friendly, empathetic, motivational and adaptive guide intent is reaffirmed; exact adaptation rules remain G-01 for review in EXPERIENCE_TO_DELIVERY.md.
 - A guide is a product persona. Neither guide is a sample user, account owner, credentialed clinician or claim of a real person responding.
 - Sample profiles are explicitly fictional, with visible summaries, editable inputs and sample-data badges. “Sample A/B” are temporary fixture identifiers; final names are deferred. Choosing a sample never implies the user supplied those details.
 - Keep guide selection, profile identity and data origin as separate fields. Never infer a user's name or attributes from the guide.
@@ -129,3 +132,7 @@ Release acceptance requires both journeys, honest modes, persistence/reversal ch
 ## YM-01 documentation gate
 
 Satisfied: approved defaults and exceptions recorded; inputs/outputs and mode boundaries specified; timing, duration, quantities, negative cases, actions, entitlement reversal and storage/reset contracts documented; material storage change visibly deferred with an implementation gate; YM-02 split preserves its parent scope. All AC-01–AC-18 remain unexecuted. Remaining architecture approval does not prevent YM-02A's frontend scaffold; it blocks persistence implementation, not documentation completion.
+
+## Experience amendment and UI gate
+
+Phone portrait and tablet landscape are primary prototype reference orientations. Preserve the full screen ecosystem in EXPERIENCE_TO_DELIVERY.md, even when other domains are previews. Exercise Dashboard option 1 and its small fixed Jane bubble are reaffirmed by Kaiwan; original assets are missing, so no visual fidelity has been verified. YM-UX-01 must reconcile references before UI implementation and each screen must be reviewed against phone/tablet references before integration. Guide adaptation details remain a proposal with data/functional invariants retained. AC-01–AC-18 remain unexecuted; AC-13's earlier generic mobile check is supplemented by the matrix's phone/tablet/reference checks. Further implementation is paused. Original YM-01 documentation sign-off is retained, not a claim that these new experience checks passed.

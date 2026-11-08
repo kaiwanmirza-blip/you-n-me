@@ -1,23 +1,24 @@
 {
   "schemaVersion": 1,
   "project": "You&Me",
-  "updatedOn": "2026-11-02",
+  "updatedOn": "2026-11-04",
   "timezone": "America/Chicago",
   "applicationRepository": "https://github.com/kaiwanmirza-blip/you-n-me",
-  "inspectedBranch": "main",
-  "inspectedCommit": "74dca7f36e0ae6e4ae31ef55f3ed457a1b36e6de",
+  "inspectedBranch": "feat/ym-preview-01",
+  "inspectedCommit": "acbe3d8db3bc00b8761281bca0bdb7b00fe28525",
   "dashboardUrl": "https://youme-build-command-center.newclay.chatgpt.site",
   "dashboardSourceRepository": null,
-  "dashboardSynchronization": "not updated; full ledger and ID mapping unresolved",
+  "dashboardSynchronization": "Authenticated capture available; task-status/source synchronization pending",
   "currentMilestone": "investor prototype",
   "delivery": {
     "requestedId": "YM-01",
     "title": "Product foundation and acceptance",
     "status": "complete — documentation gate only",
     "productApproval": "approved with explicit refinements and deferred decisions",
-    "implementation": "YM-02A frontend scaffold complete locally; product journeys not implemented",
+    "implementation": "YM-02A/B verified locally; APP:YM-PREVIEW-01 in-memory Fitness sample implemented; Nutrition/live/persistence unavailable",
     "acceptanceExecution": "AC-01–AC-18 specified; all unexecuted",
-    "dashboardIdMapping": "unresolved: dashboard YM-01 has a different title and task structure"
+    "dashboardIdMapping": "unresolved: dashboard YM-01 has a different title and task structure",
+    "experienceAmendment": "Open reconciliation; earlier YM-01 documentation sign-off preserved; no UI approval implied"
   },
   "scope": {
     "workingJourneys": [
@@ -43,9 +44,19 @@
     "decisions": "docs/DECISION_LOG.md",
     "sessions": "docs/SESSION_LOG.md",
     "storage": "docs/STORAGE_AND_ISOLATION.md",
-    "scaffoldVerification": "docs/YM-02A_VERIFICATION.md"
+    "scaffoldVerification": "docs/YM-02A_VERIFICATION.md",
+    "apiFoundation": "docs/API_FOUNDATION.md",
+    "apiVerification": "docs/YM-02B_VERIFICATION.md",
+    "experienceMatrix": "docs/EXPERIENCE_TO_DELIVERY.md",
+    "referenceRegister": "docs/REFERENCE_REGISTER.md",
+    "exerciseReview": "docs/EXERCISE_DASHBOARD_REVIEW.md",
+    "dashboardSyncProposal": "docs/DASHBOARD_SYNC_PROPOSAL.md",
+    "deckInspection": "docs/references/deck-inspection.json",
+    "supabaseProposal": "docs/SUPABASE_ARCHITECTURE_PROPOSAL.md",
+    "previewVerification": "docs/YM-PREVIEW-01_VERIFICATION.md",
+    "previewRunbook": "docs/PREVIEW_RUNBOOK.md"
   },
-  "recordProvenance": "Local records and scaffold in verified Git checkout; not committed or pushed; original external planning documents unavailable",
+  "recordProvenance": "Local implementation directly checked in this chat; dashboard receives reported evidence only",
   "futureMilestones": {
     "status": "proposed and unscheduled",
     "items": [
@@ -59,16 +70,37 @@
   },
   "storageDecision": {
     "id": "S-01",
-    "recommendation": "SQLite local / D1 hosted via session-scoped API",
-    "status": "material hosted data-handling change pending review before persistence implementation",
+    "recommendation": "Dedicated Supabase Postgres + anonymous Auth + Hono BFF; local stack first",
+    "status": "Supabase replacement proposed pending review; historically approved SQLite/D1 implementation paused",
     "blocks": [
       "YM-02C"
     ],
     "doesNotBlock": [
-      "YM-02A"
-    ]
+      "YM-02A",
+      "YM-02B"
+    ],
+    "productReview": {
+      "status": "replacement platform/anonymous Auth pending approval",
+      "implementation": "paused; local SQLite drafts inactive; no migrations applied"
+    },
+    "previousApprovedArchitecture": "SQLite locally / D1 intended; paused after inactive draft files",
+    "approvedLifecycle": {
+      "inactivityDays": 7,
+      "absoluteDays": 30,
+      "expiredActiveRecordCleanupHours": 24,
+      "continuity": "browser/installation only",
+      "hostedDemonstrations": "fictional only, activation/personal data deferred"
+    },
+    "proposalProject": {
+      "name": "you-n-me-prototype",
+      "created": false,
+      "organizationCandidate": "bcxqhabehcsayuwalemo",
+      "organizationSelection": "requires user confirmation",
+      "region": "requires user confirmation",
+      "excludedProject": "iloiveofvljyctrodpyx (Elevated Finds Studio)"
+    }
   },
-  "nextTask": "YM-02B API foundation and typed contracts — requires separate authorization",
+  "nextTask": "Screen review, then APP:YM-04A bounded Hono live Fitness provider gateway after provider/privacy authorization",
   "engineeringFoundation": {
     "id": "YM-02",
     "status": "In progress",
@@ -85,12 +117,23 @@
       {
         "id": "YM-02B",
         "title": "API foundation and typed contracts",
-        "status": "To do"
+        "status": "Complete — local verification",
+        "evidence": "docs/YM-02B_VERIFICATION.md",
+        "executor": "Codex in this chat",
+        "responsibility": "Engineering / API foundation and typed contracts"
       },
       {
         "id": "YM-02C",
         "title": "Migrations and persistence foundation",
-        "status": "To do"
+        "status": "Paused — Supabase replacement scope proposed pending review",
+        "proposedScope": "Local Supabase/Postgres/Auth, ownership/RLS, lifecycle/reset/cleanup and fictional seeds; no cloud mutation",
+        "evidence": "docs/SUPABASE_ARCHITECTURE_PROPOSAL.md",
+        "interruptedDrafts": [
+          "migrations/0001_sessions.sql",
+          "migrations/0002_resources.sql",
+          "server/database.ts",
+          "server/persistence.ts"
+        ]
       },
       {
         "id": "YM-02D",
@@ -100,10 +143,153 @@
     ]
   },
   "repositoryState": {
-    "branch": "main",
+    "branch": "feat/ym-preview-01",
     "baseCommit": "74dca7f36e0ae6e4ae31ef55f3ed457a1b36e6de",
-    "newCommit": null,
-    "githubSynchronization": "fetched main; no push or PR; local changes only",
-    "dashboardSynchronization": "not updated"
+    "newCommit": "acbe3d8db3bc00b8761281bca0bdb7b00fe28525",
+    "githubSynchronization": "No push or PR; source remains local",
+    "dashboardSynchronization": "not performed; change list prepared only",
+    "checkpointCommit": "acbe3d8db3bc00b8761281bca0bdb7b00fe28525",
+    "checkpointIdentity": "Codex <codex@localhost>; command-local identity, no global config",
+    "implementationChanges": "Preview plus required YM-02B foundation; inactive SQLite drafts preserved and excluded from commit"
+  },
+  "executionPolicy": {
+    "state": "Bounded preview authorized; persistence remains paused",
+    "scope": "APP:YM-PREVIEW-01 only; stop for screen review",
+    "resumeRequires": "Further deliverables require explicit authorization; S-01/provider review separate"
+  },
+  "experience": {
+    "source": "Current user product-baseline reaffirmation; original visual assets not recovered",
+    "primaryDevices": [
+      "phone",
+      "tablet"
+    ],
+    "referenceOrientations": [
+      "phone portrait",
+      "tablet landscape"
+    ],
+    "scaffoldDesignApproval": false,
+    "exerciseReference": "Option 1: clean scalable interface, small fixed Jane bubble; asset missing",
+    "fullVision": [
+      "onboarding",
+      "home",
+      "exercise",
+      "fashion",
+      "travel",
+      "etiquette",
+      "nutrition/wellness",
+      "blog/community",
+      "subscription/settings",
+      "weekly reflection"
+    ],
+    "guideIntent": "friendly, empathetic, motivational, adaptive; exact behavior G-01 pending",
+    "designCheckpoint": {
+      "id": "YM-UX-01",
+      "namespace": "application",
+      "status": "Open — reference recovery at current limit; screen approval remains pending",
+      "requiredBefore": "Final screen acceptance; latest user authorizes a NEW implemented proposal without original references",
+      "preparationEvidence": "docs/REFERENCE_REGISTER.md",
+      "screenReviewStatus": "Agent browser-emulated review performed; user visual acceptance pending",
+      "blockers": [
+        "Original-reference fidelity unavailable",
+        "New proposal awaits screen review; G-01 deeper behavior pending"
+      ]
+    },
+    "referenceAssets": "Two historical proposal decks and one embedded cover located; approved screen references and identified Jane/Kay assets missing",
+    "mobilePackaging": {
+      "id": "YM-MOBILE-01",
+      "status": "proposed and unscheduled",
+      "separateFromResponsiveLayouts": true
+    },
+    "referencePreparation": {
+      "located": [
+        "REF-001",
+        "REF-002",
+        "REF-003"
+      ],
+      "approvalRecoveredImageMissing": [
+        "REF-004",
+        "REF-005",
+        "REF-006",
+        "REF-007"
+      ],
+      "newProposals": [
+        "REF-P01",
+        "REF-P02",
+        "REF-P03"
+      ],
+      "status": "preparation complete; actual gate remains open",
+      "searchBoundary": "current repository and two known proposal files in project parent only"
+    },
+    "guideDecision": {
+      "id": "G-01",
+      "status": "pending review"
+    },
+    "referenceRecovery": {
+      "status": "current limit reached",
+      "repeatSearches": false,
+      "resumeOn": "new user-supplied asset or location",
+      "blocksAllProjectWork": false,
+      "originalExerciseImages": "unavailable",
+      "tabletAndMissingStates": "may require new design review",
+      "finalAvatarArtwork": "may remain pending; approved Jane/Kay concept unchanged",
+      "reconstructions": "new proposal only; never original approved reference"
+    }
+  },
+  "taskIdentity": {
+    "applicationNamespace": "APP",
+    "dashboardNamespace": "DASH",
+    "rawIdsPreserved": true,
+    "crosswalk": "docs/EXPERIENCE_TO_DELIVERY.md",
+    "fullMapping": "Fresh revision17 application reconciliation supplies partial overlaps; no renumbering"
+  },
+  "dashboardObservation": {
+    "revision": 17,
+    "updatedAt": "2026-11-04T19:41:43.608Z",
+    "readOnly": true,
+    "source": "Authenticated get_project_plan and get_task YM-04.1",
+    "taskStatus": "Historical before local preview; capture does not complete tasks"
+  },
+  "dashboardSourceAccess": {
+    "metadata": "accessible; current saved Site version 7; owner role",
+    "sourceRemoteAndContent": "not supplied by get_site; not retrieved or verified accessible",
+    "mcpConnection": "advertised; installed/connected state not established",
+    "sourceCredentialsMinted": false,
+    "synchronizationPerformed": false
+  },
+  "supabaseReadOnlyInventory": {
+    "organization": "bcxqhabehcsayuwalemo",
+    "plan": "free",
+    "visibleProjects": [
+      {
+        "id": "iloiveofvljyctrodpyx",
+        "name": "Elevated Finds Studio",
+        "status": "ACTIVE_HEALTHY",
+        "region": "us-east-1"
+      }
+    ],
+    "operations": "list projects/organizations and get organization metadata only; no table/data/key access",
+    "capacity": "possible spare free slot inferred; not reserved or guaranteed"
+  },
+  "previewDelivery": {
+    "id": "YM-PREVIEW-01",
+    "namespace": "APP",
+    "title": "Phone/tablet Fitness experience preview",
+    "status": "Implemented locally; screen review pending",
+    "responsiblePOD": "Engineering",
+    "specialistRoles": [
+      "Frontend/application",
+      "QA verification",
+      "Documentation"
+    ],
+    "actualExecutor": "Codex in this chat; no subagents",
+    "design": "New implemented proposal; not original reference or final approval",
+    "state": "In memory only; reload resets",
+    "checks": "45 tests, typecheck, production frontend/API builds and clean install passed",
+    "dashboardOverlap": [
+      "YM-04.1",
+      "YM-03.1",
+      "YM-06.1",
+      "YM-08.2"
+    ]
   }
 }
