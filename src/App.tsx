@@ -2,11 +2,13 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { defaultInputs, makeSamplePlan, modeLabel, movementOptions, setCompletion } from './fitnessPreview'
 import type { FitnessPlan, Provenance } from '../shared/contracts'
 import ApiConnection from './ApiConnection'
+import { navigate, navigateBack, type Navigation, type Screen } from './navigation'
+import { useAndroidBack } from './useAndroidBack'
 
-type Screen = 'Welcome' | 'Your goal' | 'Home' | 'Fitness' | 'Nutrition' | 'Progress' | 'Explore' | 'Settings'
 const futureAreas = ['Nutrition & wellness', 'Fashion', 'Travel', 'Etiquette', 'Blog & community', 'Weekly reflection', 'Subscriptions']
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('Welcome')
+  const [navigation, setNavigation] = useState<Navigation>({screen:'Welcome',history:[]})
+  const screen = navigation.screen
   const [guide, setGuide] = useState<'Jane' | 'Kay'>('Jane')
   const [mode, setMode] = useState<'guided' | 'demo'>('guided')
   const [goal, setGoal] = useState('I want to build a consistent fitness routine.')
@@ -23,7 +25,12 @@ export default function App() {
   const errorRef = useRef<HTMLDivElement>(null)
   useEffect(() => { heading.current?.focus(); shell.current?.scrollTo(0, 0) }, [screen])
   useEffect(() => { if (error) errorRef.current?.focus() }, [error])
-  function go(next: Screen) { setScreen(next); setError(''); setNotice('') }
+  function go(next: Screen) { setNavigation(n => navigate(n, next)); setError(''); setNotice('') }
+  useAndroidBack(() => {
+    if (confirmReset) { setConfirmReset(false); return true }
+    if (!navigation.history.length) return false
+    setNavigation(n => navigateBack(n)); setError(''); setNotice(''); return true
+  })
   async function prepare(event: FormEvent) {
     event.preventDefault(); setError('')
     if (!goal.trim() || goal.length > 400) { setError('Enter a practical sample goal between 1 and 400 characters.'); return }
@@ -37,7 +44,7 @@ export default function App() {
     finally { setBusy(false) }
   }
   function restart() {
-    setConfirmReset(false); setGuide('Jane'); setMode('guided'); setGoal('I want to build a consistent fitness routine.'); setInputs({...defaultInputs}); setCandidate(null); setSelected(null); setCompleted([]); go('Welcome')
+    setConfirmReset(false); setGuide('Jane'); setMode('guided'); setGoal('I want to build a consistent fitness routine.'); setInputs({...defaultInputs}); setCandidate(null); setSelected(null); setCompleted([]); setNavigation({screen:'Welcome',history:[]}); setError(''); setNotice('')
   }
   const displayed = candidate ?? selected
   const isSelected = displayed !== null && displayed === selected

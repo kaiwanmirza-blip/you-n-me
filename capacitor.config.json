@@ -1,0 +1,11 @@
+{
+  "appId": "com.example.youandme.dev",
+  "appName": "You&Me Dev",
+  "webDir": "dist",
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "style": "LIGHT"
+    }
+  }
+}

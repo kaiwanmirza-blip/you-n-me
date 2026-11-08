@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">You&amp;Me Dev</string>
+    <string name="title_activity_main">You&amp;Me Dev</string>
+    <string name="package_name">com.example.youandme.dev</string>
+    <string name="custom_url_scheme">com.example.youandme.dev</string>
+</resources>

@@ -4,3 +4,12 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 /* A dedicated bottom rail keeps the fixed guide outside the scrollable content. */
 body{overflow:hidden}.app-shell{height:calc(100dvh - 64px);overflow-y:auto;scroll-padding-bottom:24px}.guide-bubble{bottom:10px}button,input,select,textarea,summary{scroll-margin-block:24px}.settings-link{min-height:44px}
+
+/* Native safe areas and scalable type; no fixed orientation or text-size lock. */
+:root{font-size:100%;--inset-top:var(--safe-area-inset-top,env(safe-area-inset-top,0px));--inset-bottom:var(--safe-area-inset-bottom,env(safe-area-inset-bottom,0px));--inset-left:var(--safe-area-inset-left,env(safe-area-inset-left,0px));--inset-right:var(--safe-area-inset-right,env(safe-area-inset-right,0px));--guide-rail:4rem}
+.app-shell{height:calc(100dvh - var(--guide-rail) - var(--inset-bottom));padding-top:var(--inset-top);padding-left:max(24px,var(--inset-left));padding-right:max(24px,var(--inset-right))}
+.guide-bubble{bottom:calc(.625rem + var(--inset-bottom));right:max(16px,var(--inset-right))}
+.guide-bubble button{min-height:2.75rem;font-size:.75rem}.guide-bubble button span:first-child{width:2.125rem;height:2.125rem;font-size:1.125rem}
+body{font-size:1rem}h1{font-size:clamp(2.25rem,4.6vw,3.875rem)}h2{font-size:1.5rem}h3{font-size:1.0625rem}.lead{font-size:1.125rem}.primary,.secondary,.text-button,label,legend,.action-card p,.plan-summary dl{font-size:.875rem}.fine,.help,small{font-size:.8125rem}.navigation button{font-size:.875rem}.mode-strip,.prototype-label{font-size:.75rem}input:not([type=checkbox]),select,textarea{font-size:1rem}button{min-height:2.75rem}.progress-row{flex-wrap:wrap}.progress-row button{max-width:100%;white-space:normal}.guide-choice{flex-wrap:wrap}.guide-choice button{min-width:6rem}.timing{font-size:.75rem}
+@media(max-width:700px){.app-shell{padding-left:max(20px,var(--inset-left));padding-right:max(20px,var(--inset-right))}.navigation button{font-size:.6875rem}.lead{font-size:1rem}.settings-link{font-size:.75rem}}
+@supports (font: -apple-system-body){:root{font:-apple-system-body}}
