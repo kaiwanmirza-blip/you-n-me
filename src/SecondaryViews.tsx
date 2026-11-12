@@ -30,6 +30,46 @@ export function ExploreView({
   const [occasionId, setOccasionId] = useState<FashionOccasionFixture['id']>('game-casual')
   const [customClosetNote, setCustomClosetNote] = useState('')
   const [selectedAccessories, setSelectedAccessories] = useState<Record<string, 'A' | 'B'>>({})
+  const [styleChatInput, setStyleChatInput] = useState('')
+  const [styleConversation, setStyleConversation] = useState<
+    Array<{ sender: 'Jane' | 'Kay' | 'user'; text: string }>
+  >([
+    {
+      sender: 'Jane',
+      text: 'Tell us where you’re headed, the temperature or humidity, and how you want to feel when you walk into the room.',
+    },
+    {
+      sender: 'Kay',
+      text: 'Even though AI can’t smell, we’ll pair your outfit with climate-calibrated fragrance notes, pulse-point application, and a night-before antiperspirant & garment-steaming checklist so you show up 10/10.',
+    },
+  ])
+
+  function handleStyleConverse(promptText?: string, targetOccasion?: FashionOccasionFixture['id']) {
+    const text = (promptText ?? styleChatInput).trim()
+    if (!text) return
+    setStyleChatInput('')
+    const nextTurns = [...styleConversation, { sender: 'user' as const, text }]
+    const chosen: FashionOccasionFixture['id'] =
+      targetOccasion ??
+      (/black-tie|gala|formal|reception/i.test(text)
+        ? 'dinner-black-tie'
+        : /executive|dinner|client|business/i.test(text)
+          ? 'dinner-business-casual'
+          : /gym|workout|training/i.test(text)
+            ? 'gym-session'
+            : 'game-casual')
+    setOccasionId(chosen)
+    setCustomClosetNote(text)
+    nextTurns.push({
+      sender: 'Jane',
+      text: `We’ve tailored your ${chosen === 'dinner-business-casual' ? 'Executive Business Casual Dinner' : chosen === 'dinner-black-tie' ? 'Black-Tie & Evening Reception' : chosen === 'gym-session' ? 'Studio Training Session' : 'Weekend Game & Lounge'} silhouette around your frame proportions and comfort.`,
+    })
+    nextTurns.push({
+      sender: 'Kay',
+      text: 'Updated your Primary & Alternate outfits, Heat/Venue Fragrance pairing, and Deodorant/Hygiene timeline below. Anything else to tweak before you get dressed?',
+    })
+    setStyleConversation(nextTurns)
+  }
 
   const [diningMode, setDiningMode] = useState<'all' | 'dine-in' | 'takeaway' | 'delivery'>('dine-in')
   const [neighborhoodZip, setNeighborhoodZip] = useState('60614 · Lincoln Park')
@@ -104,6 +144,68 @@ export function ExploreView({
             transcripts, and garment-only photo samples. Accessories are offered based on your preferences without
             inferring gender.
           </p>
+
+          {/* v0.8 Conversational Style, Scent & Hygiene Studio */}
+          <div className="card glass-panel stack-sm" aria-label="Conversational Style and Scent Studio">
+            <div className="section-heading">
+              <p className="eyebrow">v0.8 CONVERSATIONAL STYLE, SCENT & HYGIENE STUDIO</p>
+              <span className="tag">Jane + Kay Co-Stylists · Wardrobe, Fragrance & Grooming</span>
+            </div>
+            <div className="chat-stream" role="log" aria-label="Style conversation history">
+              {styleConversation.map((turn, idx) => (
+                <div key={idx} className={`chat-bubble chat-${turn.sender.toLowerCase()}`}>
+                  <div className="chat-sender">
+                    <strong>{turn.sender === 'user' ? 'You' : `${turn.sender} (Stylist & Scent Coach)`}</strong>
+                  </div>
+                  <p>{turn.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className="button-row">
+              <button
+                type="button"
+                className="secondary"
+                onClick={() =>
+                  handleStyleConverse(
+                    'Heading to an Executive Business Casual Dinner in warm Dallas weather—want a V-taper structured blazer look with woody vetiver fragrance and sweat-proof prep.',
+                    'dinner-business-casual',
+                  )
+                }
+              >
+                🥂 “Executive Dinner · V-Taper Blazer + Woody Vetiver Scent”
+              </button>
+              <button
+                type="button"
+                className="secondary"
+                onClick={() =>
+                  handleStyleConverse(
+                    'Evening Black-Tie / Formal Reception—need sharp tailored silhouette, fresh bergamot & cedar scent notes, and night-before antiperspirant timing.',
+                    'dinner-black-tie',
+                  )
+                }
+              >
+                ✨ “Black-Tie Reception · Sharp Tailoring + Bergamot & Cedar”
+              </button>
+            </div>
+            <div className="inline-add">
+              <input
+                type="text"
+                aria-label="Tell Jane and Kay about your occasion, climate, and scent preference"
+                placeholder="Tell Jane & Kay your occasion, weather/humidity, and scent vibe…"
+                value={styleChatInput}
+                onChange={e => setStyleChatInput(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault()
+                    handleStyleConverse()
+                  }
+                }}
+              />
+              <button type="button" className="primary" onClick={() => handleStyleConverse()}>
+                Style Me →
+              </button>
+            </div>
+          </div>
 
           <div className="field-row">
             <div>
@@ -218,6 +320,51 @@ export function ExploreView({
                 </div>
               )
             })}
+          </div>
+
+          <div className="content-grid">
+            <article className="card featured stack-sm">
+              <p className="eyebrow">FRAGRANCE & SCENT PAIRING (HEAT & VENUE CALIBRATED)</p>
+              <h3>
+                {occasionId === 'game-casual'
+                  ? 'Crisp Bergamot, Sea Salt & Clean Vetiver'
+                  : occasionId === 'dinner-black-tie'
+                    ? 'Smoked Oud, Cardamom & Warm Amber'
+                    : occasionId === 'dinner-business-casual'
+                      ? 'Dry Cedarwood, Iris & Calabrian Citrus'
+                      : 'Unscented / Clean Mineral Mist (Gym Etiquette)'}
+              </h3>
+              <p className="fine">
+                <strong>Why {guide} chose this scent profile:</strong>{' '}
+                {occasionId === 'gym-session'
+                  ? 'Heavy colognes or perfumes clash with elevated body heat in enclosed training rooms. Keep skin fresh and neutral.'
+                  : 'Calibrated for climate, sweat rate, and table proximity—projects confidence within arm’s reach without overwhelming dinner conversation.'}
+              </p>
+              <p className="fine">
+                <strong>Application point:</strong> 2 sprays max on pulse points (collarbone / wrists) 20 minutes before
+                putting on fine merino or silk so alcohol doesn’t spot the fabric.
+              </p>
+            </article>
+
+            <article className="card soft stack-sm">
+              <p className="eyebrow">GROOMING, DEODORANT & HYGIENE CHECKLIST</p>
+              <h3>Pre-Departure Presence Protocol</h3>
+              <ul>
+                <li>
+                  <strong>Antiperspirant / Deodorant Timing:</strong> Apply clinical-strength aluminum-zirconium
+                  antiperspirant to completely dry skin (ideally night before for sweat-gland block in warm climates like
+                  Dallas) + swipe fresh aluminium-free deodorant 10 mins before dressing to prevent underarm garment marks.
+                </li>
+                <li>
+                  <strong>Fabric & Collar Prep:</strong> Quick steam on lapel/collar, lint-roll shoulder seams, and check
+                  shoe welt edges.
+                </li>
+                <li>
+                  <strong>Breath & Hydration Check:</strong> Tongue scraper + alcohol-free zinc mouth rinse after coffee
+                  or garlic-rich meals, plus 12 oz electrolyte water before heading out.
+                </li>
+              </ul>
+            </article>
           </div>
         </section>
       )}

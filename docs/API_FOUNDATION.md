@@ -74,3 +74,66 @@ Unknown routes/methods return JSON 404 / NOT_FOUND. POST bodies require applicat
 No material product decision is changed. These wire-format conventions are engineering details within the approved specification. S-01, public pricing, licensing, sixth category and older hub retirement remain unresolved/deferred as recorded.
 
 Implementation references consulted: [Hono Node adapter](https://hono.dev/docs/getting-started/nodejs), [Zod schema API](https://zod.dev/api). Actual installed versions are locked in package-lock.json.
+
+
+## Additive next-generation deterministic preview API
+
+The new contracts and endpoints supplement, rather than widen, the existing schemas. Legacy profiles still accept Jane/Kay only; existing Fitness/Nutrition plans, saved envelopes, provenance, entitlements, errors and unavailable routes retain their contracts. `Both`, measurements and Fashion are separate exported contracts. The frontend/native files are not integrated with these routes.
+
+Start locally with `npm run dev:api` (http://127.0.0.1:8787). In a second PowerShell terminal:
+
+```powershell
+$intake = @{
+  guideSelection = 'Both'
+  mode = 'demo'
+  journey = 'fitness'
+  userMessage = 'motivation: Build consistency; equipment: dumbbells; exclusions: none; I have 30 minutes'
+} | ConvertTo-Json
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8787/api/intake/converse -ContentType 'application/json' -Body $intake
+
+$baseline = @{
+  dayIndex = 0; recordedAt = '2026-01-01T00:00:00Z'; photoCheckInCompleted = $true
+  measurements = @{waistCm=90; chestCm=100; shouldersCm=110; hipsCm=100; armCm=30; thighCm=55; calfCm=35; scaleWeightKg=80}
+}
+$latest = @{
+  dayIndex = 14; recordedAt = '2026-01-15T00:00:00Z'; photoCheckInCompleted = $true
+  measurements = @{waistCm=88; chestCm=100; shouldersCm=110; hipsCm=100; armCm=30; thighCm=55; calfCm=35; scaleWeightKg=80}
+}
+$assessment = @{baseline=$baseline; latest=$latest; checkInDay=14; checkInDue=$true; mode='demo'} | ConvertTo-Json -Depth 5
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8787/api/recomp/assess -ContentType 'application/json' -Body $assessment
+```
+
+Intake returns `userMessage`, `guideSelection`, `journey`, `memoryChips`, `readiness`, `guideResponses` and explicit sample provenance. Jane/Kay solo means exactly one matching response; Both means one distinct response from each. Default journey is fitness, default mode demo. Only guided/demo are accepted; live returns a validation error, never a silent sample fallback.
+
+Extraction is a limited deterministic parser, not natural-language AI: semicolon/newline-separated `key: value` clauses recognize occasion, motivation, equipment, exclusions, dietaryPattern, pantryItems, dressCode and scentPreference. Array values are comma-separated, with explicit `none` represented by an empty array. One unambiguous whole-minute phrase (1–180 minutes) supplies duration; invalid/multiple duration phrases clear a previous duration chip. Other prose remains only in userMessage. Optional `memoryChips` can carry caller-reviewed fields forward; the server retains nothing. Unsupported/oversized clauses are not extracted. Explicit client chips are strictly validated.
+
+Intake readiness means fields are present for review, **not** program generation or medical/allergy/eligibility clearance. Required chip sets: Fitness motivation/duration/equipment/exclusions; Nutrition motivation/duration/dietaryPattern/pantryItems/exclusions; Fashion occasion/dressCode. These deterministic preview defaults do not replace the legacy journey input validators. Optional preference chips do not block readiness. Broader conversational/guide behavior acceptance remains G-01.
+
+Recomposition request requires a Day Zero baseline, assessed positive `checkInDay`, explicit `checkInDue`, and optional latest measurement entry. All seven circumference values must be positive; scale weight is optional. Latest must follow baseline in day index and timestamp, and cannot be after checkInDay. Missing latest is valid for a missed measurement check-in; malformed/partial entries are invalid. Dates and schedule are supplied by the caller: this endpoint is not a scheduler or an ownership/persistence boundary. Use fictional local examples pending personal-data review.
+
+Illustrative heuristic: waist change <= -1 cm and weight change within +/-0.5 kg flags `possible-recomposition`. Missing entry/weight produces `insufficient-data`; otherwise the result is `no-pattern-detected`. This does **not** establish fat loss or lean muscle gain, estimate tissue masses, analyze photographs or provide a clinical assessment. Thresholds are documented engineering defaults for this sample, not medically validated product rules. Output includes input snapshots, waist/weight deltas, interpretation and sample provenance. Output validation checks computed fields against inputs.
+
+For one due periodic check-in, missing current-day measurements or an incomplete photo flag yields `checkInStarImpact: -1` exactly once, even if both are missing. A complete or not-yet-due check-in yields 0. A missing Day Zero photo alone does not penalize a later completed check-in. No cumulative deduction, star-score mutation or change to the existing 70/20/10 frontend occurs; callers must not accumulate repeated assessments as separate penalties. No photos, URLs or image data are accepted.
+
+Fashion is a schema only: occasion, venueType, weather, primaryOutfit and alternateOutfit are strings; accessories and fragrance notes are string arrays; fragranceProfile includes scentFamily/notes/applicationTip. groomingChecklist requires deodorantAntiperspirantTiming, garmentCare and hygieneReminders. No fashion generation endpoint or live scent/grooming advice was added. `muscleGroupSchema` lists twelve groups but does not alter legacy exercise/plan payloads or render a map.
+
+Both new routes use the existing 64 KiB limit, no-store response headers and sanitized JSON/media/validation/internal errors. They return no session cookie, make no provider calls and save no data. Existing `/api/plan-requests`, `/api/plans`, profiles, progress and entitlement capabilities still return 501 after validation. No persistence, paid services or cloud synchronization is included.
+
+
+## v0.8 Persona Studio token evaluation
+
+`globalHeritageSchema` enumerates south_asian, latin_american, african, mediterranean, east_asian, southeast_asian, swana, pacific_islander, indigenous and central_asian. `personaWardrobeSelectionSchema` validates the requested top/bottom categories, nonempty item/accessory labels and head/full shot selection. These contracts do not modify legacy profiles or represent a live image-generation service.
+
+`POST /api/persona/token-eval` accepts action (`evaluate`, `claim-initial-set`, `restyle`, `animate`), firstSetClaimed, studioTokens, dailyAdsWatched, weeklyAdsWatched and optional guided/demo mode (demo default). All counters are nonnegative safe integers; dailyAdsWatched is capped at 10. Unsafe resulting token sums are rejected. Live/unknown modes are invalid, never sample fallback.
+
+```powershell
+# Start API in another terminal: npm run dev:api
+$payload = @{ action='claim-initial-set'; firstSetClaimed=$false; studioTokens=0; dailyAdsWatched=0; weeklyAdsWatched=0; mode='demo' } | ConvertTo-Json
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8787/api/persona/token-eval -ContentType 'application/json' -Body $payload
+```
+
+Result: action, allowed, reason, firstSetClaimed, studioTokens (next balance), tokenCost, tokensMinted, dailyAdsWatched, remainingWeeklyAds, and `{mode, source:'sample', engine:'local-deterministic-v1', persisted:false}` provenance. Claiming an unclaimed initial set costs zero and sets the flag; repeated claims are denied. Restyle/animate spends one token or returns allowed=false without a negative balance. A successful evaluation does not mean an image was changed or animated.
+
+Redemption occurs before the requested action: `floor(weeklyAdsWatched/60)` tokens are added, then a permitted restyle/animate may spend one. `weeklyAdsWatched % 60` is returned. Caller must carry the returned balance, claim flag and remainder forward and add only new watches; resubmitting historical cumulative totals would replay a reward. `evaluate` redeems without a studio action. Counts are unredeemed carry-forward totals, so tests include multiple 60-watch groups; the evaluator does not assert they occurred in a single seven-day calendar window. Daily/weekly rollover and verified ad completion are not implemented. A denied action can still return an independently redeemed balance.
+
+This endpoint is stateless arithmetic over caller-supplied preview data. It is not an authoritative wallet, does not verify real ad viewing, and has no replay protection or persistent claim ownership. Real reward enforcement requires separately approved storage/identity and ad-provider work. No frontend token-wallet wiring was added by Codex; Antigravity's existing simulation is preserved. Requests receive the same JSON/media/size/error boundaries as the other preview routes (400 invalid request, 415 non-JSON, 413 oversized). Valid but unaffordable/repeated actions return 200 with allowed=false and a reason, not fabricated execution success.

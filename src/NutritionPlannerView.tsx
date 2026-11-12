@@ -61,10 +61,105 @@ export function NutritionPlannerView({
 }) {
   const [customExclusionInput, setCustomExclusionInput] = useState('')
   const [showPantryEditor, setShowPantryEditor] = useState(false)
+  const [kitchenChatInput, setKitchenChatInput] = useState('')
+  const [kitchenConversation, setKitchenConversation] = useState<
+    Array<{ sender: 'Jane' | 'Kay' | 'user'; text: string; citation?: string }>
+  >([
+    {
+      sender: 'Jane',
+      text: 'Welcome to your v0.8 Kitchen Studio. Skip the spreadsheets—just tell us what’s in your fridge, what cultural flavors you’re craving, and any allergies or intolerances.',
+    },
+    {
+      sender: 'Kay',
+      text: 'Whether you want high-protein South Asian air-fryer spice skillets to fuel a V-taper recomp, a Latin American citrus bowl, or anti-inflammatory meals for 65+ joint longevity, we’ll configure your meals, macros, and shopping list automatically. Anything else to add before we cook?',
+      citation: 'ISSN Protein & Recomposition Stand (1.6–2.2g/kg/day) · Culinary Medicine Protocol',
+    },
+  ])
 
   const displayed = candidate ?? selected
   const isSelected = displayed !== null && displayed === selected
   const diffPoints = displayed ? compareNutritionPlans(previousVersion?.plan ?? null, displayed.plan) : []
+
+  function handleKitchenConverse(promptText?: string, preset?: 'recomp-skillet' | 'plant-allergen' | 'senior-anti-inflammatory') {
+    const text = (promptText ?? kitchenChatInput).trim()
+    if (!text) return
+    setKitchenChatInput('')
+    const nextTurns = [...kitchenConversation, { sender: 'user' as const, text }]
+
+    if (preset === 'recomp-skillet' || /protein|v-taper|india|dallas|chicken|air fryer/i.test(text)) {
+      const nextInput: NutritionPreviewResult['plan']['input'] = {
+        ...nutritionInput,
+        dietaryPattern: 'Balanced',
+        meals: 3,
+        servings: 2,
+        preparationMinutes: 30,
+        allergyAcknowledgement: 'none',
+        excludedIngredients: [],
+        cuisine: 'South Asian & Mediterranean High-Protein',
+      }
+      const nextGoal = 'High-protein V-taper body recomposition meals using air fryer & stovetop (30 mins)'
+      const nextDevs: KitchenDeviceId[] = ['air-fryer', 'stovetop']
+      onChangeNutritionGoal(nextGoal)
+      onChangeNutritionInput(nextInput)
+      onChangeDevices(nextDevs)
+      nextTurns.push({
+        sender: 'Jane',
+        text: 'We’ve calibrated your kitchen for visceral fat loss and lean muscle retention—keeping dinner under 30 minutes so you never default to takeout.',
+      })
+      nextTurns.push({
+        sender: 'Kay',
+        text: 'Locked in: High-protein Lemon-Herb Chicken, Jasmine Rice & Spinach skillet using your Air Fryer + Stovetop. Anything else in your pantry you want us to swap in?',
+        citation: 'ISSN Position Stand: High-protein caloric distribution preserves lean mass during waist reduction.',
+      })
+      setKitchenConversation(nextTurns)
+      onGenerate({ goal: nextGoal, input: nextInput, devices: nextDevs })
+      return
+    }
+
+    if (preset === 'plant-allergen' || /vegetarian|plant|peanut|shellfish|allergy|cuban|peruvian/i.test(text)) {
+      const nextInput: NutritionPreviewResult['plan']['input'] = {
+        ...nutritionInput,
+        dietaryPattern: 'Vegetarian',
+        meals: 3,
+        servings: 2,
+        preparationMinutes: 20,
+        allergyAcknowledgement: 'listed',
+        excludedIngredients: ['peanuts', 'shellfish'],
+        cuisine: 'Latin American & Plant-Forward',
+      }
+      const nextGoal = '20-minute plant-forward chickpea & tofu bowls with strict peanut/shellfish exclusion'
+      const nextDevs: KitchenDeviceId[] = ['stovetop', 'microwave']
+      onChangeNutritionGoal(nextGoal)
+      onChangeNutritionInput(nextInput)
+      onChangeDevices(nextDevs)
+      nextTurns.push({
+        sender: 'Jane',
+        text: 'Allergy safety comes first—peanuts and shellfish are hard-locked out of every recipe, substitution, and shopping list item.',
+      })
+      nextTurns.push({
+        sender: 'Kay',
+        text: 'Built your 20-minute plant-forward Chickpea, Spinach & Tofu bowls using Stovetop + Microwave. Anything else to exclude?',
+        citation: 'ACAAI Food Allergy Cross-Contact Prevention & Plant-Protein Complementarity',
+      })
+      setKitchenConversation(nextTurns)
+      onGenerate({ goal: nextGoal, input: nextInput, devices: nextDevs })
+      return
+    }
+
+    const nextGoal = text
+    onChangeNutritionGoal(nextGoal)
+    nextTurns.push({
+      sender: 'Jane',
+      text: `Captured "${text}" in your active kitchen context.`,
+    })
+    nextTurns.push({
+      sender: 'Kay',
+      text: 'Updated your one-day meal plan and delta shopping list to match. Anything else you’d like to share before heading to the stove?',
+      citation: 'You&Me Unified Co-Guide Kitchen Brain v0.8',
+    })
+    setKitchenConversation(nextTurns)
+    onGenerate({ goal: nextGoal })
+  }
 
   function toggleDevice(id: KitchenDeviceId) {
     if (devices.includes(id)) {
@@ -99,6 +194,76 @@ export function NutritionPlannerView({
 
   return (
     <div className="stack-lg">
+      {/* v0.8 Conversational Kitchen & Culinary Medicine Studio */}
+      <section className="card glass-panel stack-md" aria-label="Conversational Kitchen Studio">
+        <div className="section-heading">
+          <p className="eyebrow">v0.8 CONVERSATIONAL KITCHEN STUDIO · JANE + KAY CO-GUIDES</p>
+          <span className="tag">Unified AI Brain · Pantry, Macros & Allergy Safety</span>
+        </div>
+
+        <div className="chat-stream" role="log" aria-label="Kitchen conversation history">
+          {kitchenConversation.map((turn, idx) => (
+            <div key={idx} className={`chat-bubble chat-${turn.sender.toLowerCase()}`}>
+              <div className="chat-sender">
+                <strong>{turn.sender === 'user' ? 'You' : `${turn.sender} (Kitchen & Nutrition Guide)`}</strong>
+                {turn.citation && <span className="citation-badge">{turn.citation}</span>}
+              </div>
+              <p>{turn.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="stack-sm">
+          <p className="fine">
+            <strong>Tap a conversational kitchen prompt (or type what’s in your fridge below):</strong>
+          </p>
+          <div className="button-row">
+            <button
+              type="button"
+              className="secondary"
+              onClick={() =>
+                handleKitchenConverse(
+                  'I’m in Dallas with South Asian roots working toward a V-taper recomp. I have chicken breast, spinach, rice, lemon, and an air fryer—keep dinner under 30 mins!',
+                  'recomp-skillet',
+                )
+              }
+            >
+              🍛 “V-Taper High-Protein Skillet (Air-Fryer + Stovetop · 30m)”
+            </button>
+            <button
+              type="button"
+              className="secondary"
+              onClick={() =>
+                handleKitchenConverse(
+                  'Give me a 20-minute Latin/Plant-Forward chickpea & tofu bowl using stovetop and microwave—strictly no peanuts or shellfish!',
+                  'plant-allergen',
+                )
+              }
+            >
+              🥗 “20m Plant-Forward Bowl (Peanut & Shellfish Allergy Lock)”
+            </button>
+          </div>
+          <div className="inline-add">
+            <input
+              type="text"
+              aria-label="Tell Jane and Kay what is in your kitchen or what you are craving"
+              placeholder="Tell Jane & Kay what’s in your fridge, your spice cravings, or allergies…"
+              value={kitchenChatInput}
+              onChange={e => setKitchenChatInput(e.target.value)}
+              onKeyDown={e => {
+                if (e.key === 'Enter') {
+                  e.preventDefault()
+                  handleKitchenConverse()
+                }
+              }}
+            />
+            <button type="button" className="primary" onClick={() => handleKitchenConverse()}>
+              Ask Jane & Kay →
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Reviewer Quick Presets Bar */}
       <section className="card soft" aria-label="Nutrition scenario presets">
         <div className="section-heading">

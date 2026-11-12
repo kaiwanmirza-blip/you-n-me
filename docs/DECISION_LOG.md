@@ -1,5 +1,19 @@
 # Decision log
 
+## v0.8.0 — Persona Studio and deterministic guide/token gateway (2026-11-12)
+
+The user authorized a new `feat/ym-v0.8` branch from `72b116abfffd2b21eea91ae96ddade26dc95044c`. `feat/ym-preview-01` remains at that v0.7.4 snapshot; no merge or rewrite is intended. v0.8 carries the previously uncommitted additive intake/recomposition contracts and routes plus Antigravity's existing frontend work. Codex did not author or overwrite that frontend: src/public hashes are unchanged from this task's initial snapshot. Inventory confirms 40 persona JPGs under public/guides/personas plus the existing guide portraits. Mobile bundles were regenerated only by the explicitly requested `npm run mobile:sync`.
+
+Added global heritage and strict wardrobe contracts, pure persona token evaluation and `POST /api/persona/token-eval`. Initial set is free once; restyle/animate spends one available token; daily watch counts are integers 0..10; each 60 unredeemed cumulative watches mints one token and returns the remainder. These are deterministic sample transitions, not verified ad views, a secure wallet, paid services or persistent entitlements. Existing schemas/exports and unavailable legacy routes are retained. Guide intake/recomposition remain sample-only; no live provider gateway is enabled. Fashion's conversational studio is a preview, not an accepted live journey.
+
+Verification passed: typecheck, 125 tests / 8 files, production frontend/API build, mobile:sync and mobile:verify. Vite reports a >500 kB JS chunk warning. Native compilation/runtime, physical devices, final visual approval, live provider behavior, real ad-network rewards and persistent wallet acceptance were not verified. No clean install was needed because dependencies did not change. No preview process was stopped or restarted.
+
+S-01 remains Supabase replacement proposed / prior SQLite work paused; YM-02C stays paused, YM-02D To do, parent YM-02 In progress. YM-UX-01 and G-01 retain their broader acceptance gates. No persistence, provider calls, ad SDK, billing, deployment or store publication. Responsible POD: Engineering; specialists: API contracts, integration verification, repository delivery/documentation. Actual executor for those actions: Codex in this chat, no subagents. Frontend origin: Antigravity as reported by Kaiwan; source/asset inventory and automated checks inspected here, not independent visual approval.
+
+Commit/push and Command Center receipt are authorized; actual receipts are recorded after execution. Dashboard read before work: revision 24, 72 tasks / 7 complete. Receipt capture does not complete canonical task cards, change release status or constitute independent QA. Existing APP/DASH IDs/history are preserved.
+
+> Earlier snapshots below remain historical.
+
 ## APP:YM-PREVIEW-02 — v0.7.4 integration closeout (2026-11-11 Central)
 
 Current evidence supersedes earlier statements that Nutrition is unavailable **for sample preview scope only**. The integrated source existed before this synchronization task. It contains working in-memory Fitness and Nutrition samples, a demo-controlled 48-hour guest trial state machine, six bundle offerings with simulated Basic/Plus/Pro AI recall tiers, proposed 70/20/10 Habit Stars, Jane/Kay GuideAvatar SVG personas with six task wardrobes, and Explore previews for Fashion, Local Date Night, Instagram share, Friends & Challenges, and FAQs/45-Day Pilot table. Recall tiers, trial timing controls, prices and scoring examples are simulations/proposals, not actual AI memory, elapsed-time entitlement enforcement, paid subscriptions or approved commercial terms.

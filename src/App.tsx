@@ -42,7 +42,16 @@ import {
   type ParticipantPair,
   type SharedBehaviorChallenge,
 } from './experienceData'
-import { GuidePortraitSvg, ageLookLabels } from './GuideAvatar'
+import {
+  GLOBAL_HERITAGE_ROSTER,
+  GuidePersonaClosetStudio,
+  GuidePortraitSvg,
+  InteractiveStudioHub,
+  ageLookLabels,
+  defaultConversationalMemory,
+  type ConversationalMemoryState,
+  type GlobalHeritageKey,
+} from './GuideAvatar'
 import { NutritionPlannerView } from './NutritionPlannerView'
 import { ExploreView, FaqsAndPilotHandoffView, FriendsChallengesView } from './SecondaryViews'
 import type { FitnessPlan, Provenance } from '../shared/contracts'
@@ -71,6 +80,12 @@ export default function App() {
 
   // Guide & Persona state
   const [guide, setGuide] = useState<'Jane' | 'Kay'>('Jane')
+  const [coGuideMode, setCoGuideMode] = useState(true)
+  const [selectedHeritage, setSelectedHeritage] = useState<GlobalHeritageKey>('south_asian')
+  const [deviceFrameMode, setDeviceFrameMode] = useState<'full' | 'phone' | 'tablet'>('full')
+  const [conversationalMemory, setConversationalMemory] = useState<ConversationalMemoryState>({
+    ...defaultConversationalMemory,
+  })
   const [guideAppearance, setGuideAppearance] = useState<GuideAppearance>({
     ageLook: '30s-peer',
     skinTone: 'warm-amber',
@@ -435,7 +450,11 @@ export default function App() {
   ]
 
   return (
-    <div className={`app-shell theme-${resolvedTheme}`} data-theme={resolvedTheme} ref={shell}>
+    <div
+      className={`app-shell theme-${resolvedTheme} frame-${deviceFrameMode}`}
+      data-theme={resolvedTheme}
+      ref={shell}
+    >
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
@@ -453,6 +472,19 @@ export default function App() {
         <span className="tag">16+ Product · 18+ Pilot</span>
 
         <div className="masthead-actions">
+          <div className="theme-pill-group" role="group" aria-label="Device viewport frame">
+            {(['full', 'phone', 'tablet'] as const).map(f => (
+              <button
+                key={f}
+                type="button"
+                className="theme-btn"
+                aria-pressed={deviceFrameMode === f}
+                onClick={() => setDeviceFrameMode(f)}
+              >
+                {f === 'full' ? 'Full Screen' : f === 'phone' ? '📱 iPhone Frame' : '📟 iPad Frame'}
+              </button>
+            ))}
+          </div>
           <div className="theme-pill-group" role="group" aria-label="Color theme">
             {(['system', 'light', 'dark'] as const).map(t => (
               <button
@@ -462,7 +494,7 @@ export default function App() {
                 aria-pressed={themePreference === t}
                 onClick={() => setThemePreference(t)}
               >
-                {t === 'system' ? 'System' : t === 'light' ? 'Light' : 'Dark'}
+                {t === 'system' ? 'System' : t === 'light' ? 'Pearl Light' : 'Obsidian Dark'}
               </button>
             ))}
           </div>
@@ -674,7 +706,7 @@ export default function App() {
         <main id="main-content">
           <div className="section-heading">
             <p className="eyebrow">YOUR EVERYDAY, WITH INTENTION</p>
-            <span className="design-note">New design proposal · v0.7.4</span>
+            <span className="design-note">New design proposal · v0.8.0</span>
           </div>
 
           <h1 ref={heading} tabIndex={-1}>
@@ -724,10 +756,15 @@ export default function App() {
                     guide={guide}
                     appearance={guideAppearance}
                     wardrobe={activeWardrobe}
-                    size={64}
+                    size={72}
+                    showCoGuide={coGuideMode}
+                    heritageKey={selectedHeritage}
                   />
                   <div>
-                    <span className="tag">AI Guide · Not a licensed clinician</span>
+                    <span className="tag">
+                      {coGuideMode ? 'Co-Guides (Jane + Kay · 1 Brain, 2 Voices)' : 'AI Guide'} · Cited Science &
+                      Coaching
+                    </span>
                     <div>
                       <strong>{guide}, your guide</strong> ({ageLookLabels[guideAppearance.ageLook]} ·{' '}
                       {activeWardrobeMeta.title})
@@ -737,25 +774,50 @@ export default function App() {
                 </div>
 
                 <fieldset className="guide-choice">
-                  <legend>Choose your AI guide (Jane default, Kay selectable)</legend>
+                  <legend>Choose your AI guide (Jane, Kay, or Both Together)</legend>
                   {(['Jane', 'Kay'] as const).map(name => (
                     <button
                       key={name}
                       type="button"
-                      aria-pressed={guide === name}
-                      onClick={() => setGuide(name)}
+                      aria-pressed={guide === name && !coGuideMode}
+                      onClick={() => {
+                        setGuide(name)
+                        setCoGuideMode(false)
+                      }}
                     >
                       {name}
                       <small>
                         {name === 'Jane'
-                          ? 'Warm, empathetic & structured'
-                          : 'Friendly, grounded & practical'}
+                          ? 'Warm, empathetic & vision-led'
+                          : 'Sharp biomechanics, kitchen & style'}
                       </small>
                     </button>
                   ))}
+                  <button
+                    type="button"
+                    aria-pressed={coGuideMode}
+                    onClick={() => setCoGuideMode(true)}
+                  >
+                    Jane + Kay Together
+                    <small>Dual-voice insights from one unified AI brain</small>
+                  </button>
                 </fieldset>
 
                 <div className="field-row">
+                  <div>
+                    <label htmlFor="welcome-guide-heritage">Guide global heritage (1st Persona Set Free)</label>
+                    <select
+                      id="welcome-guide-heritage"
+                      value={selectedHeritage}
+                      onChange={e => setSelectedHeritage(e.target.value as GlobalHeritageKey)}
+                    >
+                      {GLOBAL_HERITAGE_ROSTER.map(h => (
+                        <option key={h.key} value={h.key}>
+                          {h.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                   <div>
                     <label htmlFor="welcome-guide-age">Guide apparent age / mentor look</label>
                     <select
@@ -853,6 +915,52 @@ export default function App() {
           {/* SCREEN 2: CHOOSE YOUR JOURNEY & INPUTS ('Your goal') */}
           {screen === 'Your goal' && (
             <div className="stack-lg">
+              {/* 2027 Fluid Conversational Co-Guide Studio + Muscle Map + Body Recomp */}
+              <InteractiveStudioHub
+                guide={guide}
+                coGuideMode={coGuideMode}
+                onToggleCoGuide={setCoGuideMode}
+                memory={conversationalMemory}
+                onChangeMemory={setConversationalMemory}
+                onApplyToPlanners={preset => {
+                  if (preset === 'john-abraham-recomp') {
+                    const nextInputs = {
+                      experience: 'intermediate' as const,
+                      durationMinutes: 30,
+                      equipment: ['dumbbells', 'kettlebells', 'bench'],
+                      excludedMovements: ['squat'],
+                    }
+                    const nextGoal =
+                      'John Abraham V-Taper Recomp: 30 minutes with dumbbells, kettlebell and bench, no squats.'
+                    setGoal(nextGoal)
+                    setInputs(nextInputs)
+                    void prepareFitness(undefined, { goal: nextGoal, inputs: nextInputs })
+                  } else if (preset === 'senior-chair-mobility') {
+                    const nextInputs = {
+                      experience: 'beginner' as const,
+                      durationMinutes: 20,
+                      equipment: ['resistance-bands'],
+                      excludedMovements: ['squat'],
+                    }
+                    const nextGoal = 'Age 65–75+ Seated Chair & Resistance-Band Longevity Session (Knee-Safe).'
+                    setGoal(nextGoal)
+                    setInputs(nextInputs)
+                    void prepareFitness(undefined, { goal: nextGoal, inputs: nextInputs })
+                  } else if (preset === 'cuban-peruvian-frame') {
+                    const nextInputs = {
+                      experience: 'intermediate' as const,
+                      durationMinutes: 30,
+                      equipment: ['dumbbells', 'resistance-bands'],
+                      excludedMovements: [],
+                    }
+                    const nextGoal = 'Regional Frame & Symmetry Sculpting: 30 minutes with dumbbells & bands.'
+                    setGoal(nextGoal)
+                    setInputs(nextInputs)
+                    void prepareFitness(undefined, { goal: nextGoal, inputs: nextInputs })
+                  }
+                }}
+              />
+
               {/* Returning Member Fast-Path Card vs First-Time Guest */}
               <section className="card featured" aria-label="Returning member fast path">
                 <div className="section-heading">
@@ -1290,6 +1398,52 @@ export default function App() {
           {/* SCREEN 4: FITNESS PLANNER */}
           {screen === 'Fitness' && (
             <div className="stack-lg">
+              {/* 2027 Fluid Conversational Co-Guide Studio + Muscle Map + Body Recomp */}
+              <InteractiveStudioHub
+                guide={guide}
+                coGuideMode={coGuideMode}
+                onToggleCoGuide={setCoGuideMode}
+                memory={conversationalMemory}
+                onChangeMemory={setConversationalMemory}
+                onApplyToPlanners={preset => {
+                  if (preset === 'john-abraham-recomp') {
+                    const nextInputs = {
+                      experience: 'intermediate' as const,
+                      durationMinutes: 30,
+                      equipment: ['dumbbells', 'kettlebells', 'bench'],
+                      excludedMovements: ['squat'],
+                    }
+                    const nextGoal =
+                      'John Abraham V-Taper Recomp: 30 minutes with dumbbells, kettlebell and bench, no squats.'
+                    setGoal(nextGoal)
+                    setInputs(nextInputs)
+                    void prepareFitness(undefined, { goal: nextGoal, inputs: nextInputs })
+                  } else if (preset === 'senior-chair-mobility') {
+                    const nextInputs = {
+                      experience: 'beginner' as const,
+                      durationMinutes: 20,
+                      equipment: ['resistance-bands'],
+                      excludedMovements: ['squat'],
+                    }
+                    const nextGoal = 'Age 65–75+ Seated Chair & Resistance-Band Longevity Session (Knee-Safe).'
+                    setGoal(nextGoal)
+                    setInputs(nextInputs)
+                    void prepareFitness(undefined, { goal: nextGoal, inputs: nextInputs })
+                  } else if (preset === 'cuban-peruvian-frame') {
+                    const nextInputs = {
+                      experience: 'intermediate' as const,
+                      durationMinutes: 30,
+                      equipment: ['dumbbells', 'resistance-bands'],
+                      excludedMovements: [],
+                    }
+                    const nextGoal = 'Regional Frame & Symmetry Sculpting: 30 minutes with dumbbells & bands.'
+                    setGoal(nextGoal)
+                    setInputs(nextInputs)
+                    void prepareFitness(undefined, { goal: nextGoal, inputs: nextInputs })
+                  }
+                }}
+              />
+
               {/* Reviewer Comparison Preset Bar */}
               <section className="card soft" aria-label="Fitness reviewer comparison presets">
                 <div className="section-heading">
@@ -2043,7 +2197,14 @@ export default function App() {
                 <span className="tag">Reload resets in-memory preview</span>
               </div>
 
-              <h2>Your AI Guide & Persona Customization</h2>
+              <h2>Your AI Guide, 10 Global Heritages & Dress-Up Closet Studio</h2>
+              <GuidePersonaClosetStudio
+                guide={guide}
+                onSelectGuide={setGuide}
+                selectedHeritage={selectedHeritage}
+                onSelectHeritage={setSelectedHeritage}
+              />
+
               <div className="button-row">
                 {(['Jane', 'Kay'] as const).map(name => (
                   <button
@@ -2318,10 +2479,14 @@ export default function App() {
                 appearance={guideAppearance}
                 wardrobe={activeWardrobe}
                 size={68}
+                showCoGuide={coGuideMode}
+                heritageKey={selectedHeritage}
               />
               <div>
-                <span className="eyebrow">AI GUIDE · {activeWardrobeMeta.title.toUpperCase()}</span>
-                <h3>{guide}</h3>
+                <span className="eyebrow">
+                  {coGuideMode ? 'CO-GUIDES · JANE & KAY' : `AI GUIDE · ${activeWardrobeMeta.title.toUpperCase()}`}
+                </span>
+                <h3>{coGuideMode ? 'Jane + Kay' : guide}</h3>
                 <p className="fine">{ageLookLabels[guideAppearance.ageLook]}</p>
               </div>
             </div>
@@ -2336,6 +2501,14 @@ export default function App() {
                 onClick={() => setGuide(g => (g === 'Jane' ? 'Kay' : 'Jane'))}
               >
                 Switch to {guide === 'Jane' ? 'Kay' : 'Jane'}
+              </button>
+              <button
+                type="button"
+                className="secondary"
+                aria-pressed={coGuideMode}
+                onClick={() => setCoGuideMode(c => !c)}
+              >
+                {coGuideMode ? '✓ Both Together' : 'Use Both Guides'}
               </button>
               <button type="button" className="text-button" onClick={() => go('Settings')}>
                 Customize look →

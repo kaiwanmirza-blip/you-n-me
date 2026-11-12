@@ -2,6 +2,8 @@ import { Hono } from 'hono'
 import { bodyLimit } from 'hono/body-limit'
 import { z } from 'zod'
 import { apiErrorSchema, entitlementSchema, healthSchema, planRequestSchema, profileSchema, progressEventSchema, savedPlanSchema, type ApiError } from '../shared/contracts.js'
+import { intakeRequestSchema, makeConversationTurn, recompAssessmentRequestSchema, assessRecomposition } from '../shared/contracts.js'
+import { personaTokenEvalRequestSchema, evaluatePersonaTokenState } from '../shared/contracts.js'
 
 function error(code: ApiError['error']['code'], message: string, issues?: ApiError['error']['issues']): ApiError {
   return apiErrorSchema.parse({ error: { code, message, ...(issues ? { issues } : {}) } })
@@ -12,6 +14,28 @@ export function createApp() {
   app.use('/api/*', async (c, next) => { c.header('Cache-Control', 'no-store'); await next() })
   app.use('/api/*', bodyLimit({ maxSize: 64 * 1024, onError: c => c.json(error('PAYLOAD_TOO_LARGE', 'Request exceeds 64 KiB.'), 413) }))
   app.get('/api/health', c => c.json(healthSchema.parse({ status: 'ok', service: 'you-n-me-api' })))
+
+  // Stateless preview calculations only. Never invoke a provider or write records.
+  const previewRoutes = [
+    ['/api/intake/converse', intakeRequestSchema, makeConversationTurn],
+    ['/api/recomp/assess', recompAssessmentRequestSchema, assessRecomposition],
+    ['/api/persona/token-eval', personaTokenEvalRequestSchema, evaluatePersonaTokenState],
+  ] as const
+  for (const [path, schema, respond] of previewRoutes) {
+    app.post(path, async c => {
+      if (c.req.header('content-type')?.split(';')[0]?.trim().toLowerCase() !== 'application/json') {
+        return c.json(error('UNSUPPORTED_MEDIA_TYPE', 'Use application/json.'), 415)
+      }
+      let data: unknown
+      try { data = await c.req.json() } catch { return c.json(error('INVALID_JSON', 'Body must be valid JSON.'), 400) }
+      const parsed = schema.safeParse(data)
+      if (!parsed.success) {
+        return c.json(error('VALIDATION_ERROR', 'Request does not match the contract.', parsed.error.issues.map(i => ({ path: i.path.map(p => typeof p === 'number' ? p : String(p)), code: i.code }))), 400)
+      }
+      // Each responder also validates its output contract before returning 200.
+      return c.json(respond(parsed.data))
+    })
+  }
 
   const routes = [
     ['/api/profiles', profileSchema],

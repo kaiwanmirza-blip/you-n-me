@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "project": "You&Me",
-  "updatedOn": "2026-11-11",
+  "updatedOn": "2026-11-12",
   "timezone": "America/Chicago",
   "applicationRepository": "https://github.com/kaiwanmirza-blip/you-n-me",
-  "inspectedBranch": "feat/ym-preview-01",
-  "inspectedCommit": "bcb297acfd41b8acaac75e301d52128213f2697e",
+  "inspectedBranch": "feat/ym-v0.8",
+  "inspectedCommit": "72b116abfffd2b21eea91ae96ddade26dc95044c",
   "dashboardUrl": "https://youme-build-command-center.newclay.chatgpt.site",
   "dashboardSourceRepository": null,
   "dashboardSynchronization": "Evidence captures persisted at revisions 23 and 24; canonical task/release edits pending dashboard sign-in; partial synchronization only",
-  "currentMilestone": "investor prototype",
+  "currentMilestone": "v0.8.0 investor prototype (local sample milestone; not deployed)",
   "privatePilot": {
     "status": "planned",
     "channel": "invite-only responsive web pilot",
@@ -115,7 +115,7 @@
       "excludedProject": "iloiveofvljyctrodpyx (Elevated Finds Studio)"
     }
   },
-  "nextTask": "Review v0.7.4 phone/tablet screens under YM-UX-01; authenticate dashboard to reconcile task/release cards; persistence/provider implementation remains separately gated",
+  "nextTask": "Review v0.8 phone/tablet experience and token-preview defaults; keep S-01/YM-02C and live-provider implementation separately gated",
   "engineeringFoundation": {
     "id": "YM-02",
     "status": "In progress",
@@ -158,19 +158,24 @@
     ]
   },
   "repositoryState": {
-    "branch": "feat/ym-preview-01",
+    "branch": "feat/ym-v0.8",
     "baseCommit": "74dca7f36e0ae6e4ae31ef55f3ed457a1b36e6de",
     "newCommit": "92238939b9a79ad307cf5ec1dfd682b3b149926e",
-    "githubSynchronization": "Integration commit 92238939b9a79ad307cf5ec1dfd682b3b149926e pushed to origin feat/ym-preview-01 and verified with git ls-remote; documentation receipt commit follows. No merge/deployment.",
+    "githubSynchronization": "v0.8 commit/push authorized; actual receipt follows execution. v0.7.4 branch is preserved.",
     "dashboardSynchronization": "Evidence captures persisted at revisions 23 and 24; canonical task/release edits pending dashboard sign-in; partial synchronization only",
     "checkpointCommit": "acbe3d8db3bc00b8761281bca0bdb7b00fe28525",
     "checkpointIdentity": "Codex <codex@localhost>; command-local identity, no global config",
-    "implementationChanges": "Pre-existing v0.7.4 integration preserved exactly. Synced public bundles explicitly authorized for staging. Inactive SQLite drafts unchanged and excluded from new commit."
+    "implementationChanges": "Pre-existing v0.7.4 integration preserved exactly. Synced public bundles explicitly authorized for staging. Inactive SQLite drafts unchanged and excluded from new commit.",
+    "preservedPreviewBranch": {
+      "branch": "feat/ym-preview-01",
+      "commit": "72b116abfffd2b21eea91ae96ddade26dc95044c",
+      "version": "0.7.4"
+    }
   },
   "executionPolicy": {
-    "state": "Documentation reconciliation and Git synchronization authorized",
-    "scope": "Documentation, verification, bounded staging, feature-branch commit/push and dashboard evidence synchronization only; no application edits, merge or deployment",
-    "resumeRequires": "Further deliverables require explicit authorization; S-01/provider review separate"
+    "state": "v0.8 bounded backend/integration, verification, new-branch commit/push and dashboard receipt authorized",
+    "scope": "Preserve Antigravity source/assets; additive contracts/routes and requested mobile sync; no deployment/merge",
+    "resumeRequires": "Persistence/live providers/real ads and publication remain separately gated"
   },
   "experience": {
     "source": "Current user product-baseline reaffirmation; original visual assets not recovered",
@@ -372,5 +377,68 @@
       "integrationCaptureId": "UPD-32d57677-097a-45a3-8257-4fe4c595917c"
     },
     "commit": "92238939b9a79ad307cf5ec1dfd682b3b149926e"
+  },
+  "backendContractExtension": {
+    "title": "Next-generation additive contracts and deterministic intake/recomp routes",
+    "status": "Complete locally for bounded backend scope; full checks passed; integration/product gates remain open",
+    "responsiblePOD": "Engineering",
+    "specialistRoles": [
+      "API contracts",
+      "Backend verification"
+    ],
+    "actualExecutor": "Codex in this chat; no subagents",
+    "evidence": [
+      "shared/contracts.ts",
+      "shared/contracts.test.ts",
+      "server/app.ts",
+      "server/app.test.ts",
+      "docs/API_FOUNDATION.md",
+      "docs/SESSION_LOG.md"
+    ],
+    "compatibility": "Legacy schemas/exports unchanged; original 55 tests pass; existing unavailable routes retained",
+    "checks": {
+      "contractApiTests": "71 passed (36 new, 35 existing)",
+      "fullTests": "92 passed / 8 files (55 original, 36 new backend, 1 concurrent frontend)",
+      "focusedTypecheck": "passed",
+      "fullTypecheck": "passed on final rerun after independent frontend correction",
+      "apiBuild": "passed",
+      "fullBuild": "passed on final rerun; >500 kB frontend bundle warning",
+      "compiledHttpSmoke": "passed; temporary localhost server closed"
+    },
+    "limitations": [
+      "Limited deterministic intake parser; not live AI",
+      "Recomposition is an illustrative possible pattern, not proven tissue change",
+      "Single check-in star delta only; no score persistence or UI integration",
+      "Frontend/native paths preserved; concurrent edits left untouched"
+    ],
+    "synchronization": "Local only; no commit, push or dashboard sync",
+    "nextAction": "Review additive contract defaults; separately authorize frontend integration, persistence or live-provider work",
+    "verificationHistory": "Intermediate full-suite/typecheck failure in concurrent src/App.test.tsx was fixed outside this task; final rerun passed."
+  },
+  "v08Milestone": {
+    "version": "0.8.0",
+    "branch": "feat/ym-v0.8",
+    "status": "Implemented and locally verified; synchronization receipts pending",
+    "features": [
+      "Ten global heritages and strict wardrobe selection contracts",
+      "Free initial persona set; one-token restyle/animate; 10/day cap and 60-watch redemption",
+      "POST /api/persona/token-eval with sample provenance",
+      "Prior deterministic intake/recomposition routes and dual-guide contracts",
+      "Antigravity frontend/40 persona portraits preserved; synced Android/iOS assets"
+    ],
+    "checks": "typecheck, 125 tests / 8 files, build, mobile:sync, mobile:verify passed",
+    "warnings": [
+      "Frontend JS chunk >500 kB",
+      "No native compilation/runtime or physical-device verification",
+      "No final UI acceptance or live provider/ad network/persistent wallet"
+    ],
+    "responsiblePOD": "Engineering",
+    "specialistRoles": [
+      "API contracts",
+      "Integration verification",
+      "Repository delivery/documentation"
+    ],
+    "actualExecutor": "Codex in this chat; no subagents. Prior frontend by Antigravity per user report; source/public bytes preserved.",
+    "synchronization": "Pending authorized new-branch push and evidence receipt; no task completion inferred"
   }
 }
