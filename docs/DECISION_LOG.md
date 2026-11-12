@@ -1,5 +1,11 @@
 # Decision log
 
+## November 11 product and repository amendment
+
+The November 11 session log and TRACKER_RECONCILIATION.md record Kaiwan's requested 45-day pilot through December 25, minimum 25 activated users, 16+ product audience, 48-hour trial, tier/bundle direction and expanded experience roadmap. These supersede older unscheduled-pilot and audience direction only as planning requirements; they do not establish implemented accounts, billing, Nutrition, live AI or release readiness. Prices, scoring weights, memory details and initial 18+ recruitment remain proposals. Teen safety, provider eligibility, real-user storage and payment activation require their separate reviews. S-01 and G-01 remain pending.
+
+November 8 authorization covered the Capacitor development foundation and feature-branch synchronization; native release/signing/store work remains gated. November 11 authorization covers committing and uploading the pending documents. Preserve main, draft PR review and APP/DASH identity history; no deployment or merge is inferred.
+
 Date: 2026-11-02. Approval authority: Kaiwan's explicit instruction to finalize YM-01, approving the latest review subject to six refinements. Earlier proposals are resolved below; deferred decisions are not inferred approvals.
 
 ## Approved decisions

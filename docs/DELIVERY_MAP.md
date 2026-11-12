@@ -1,5 +1,15 @@
 # Delivery map
 
+## Current reconciliation — 2026-11-11
+
+- APP:YM-PREVIEW-01: implemented sample loop; screen acceptance pending. Committed and pushed in dcb2792.
+- APP:YM-MOBILE-01: Capacitor Android/iOS development foundation committed and pushed in be1f11a; native compilation/runtime and store gates remain open. Responsive checks do not certify native devices.
+- YM-02A/B retain recorded completion; parent YM-02 stays open, C paused pending S-01 and D unstarted. No inactive SQLite draft is accepted persistence.
+- Pilot target: November 11–December 25, minimum 25 activated invitees. TRACKER_RECONCILIATION.md contains checkpoints, requested expanded scope and APP/DASH reconciliation; not proof of delivery or enrollment.
+- Prior session records hosted planned-release revision 22. Canonical task-card reconciliation remains pending; this repository synchronization does not update dashboard cards.
+
+Earlier dated statuses below are preserved as history. No new implementation is authorized by this update.
+
 > Current amendment — 2026-11-04: APP:YM-PREVIEW-01 is authorized and implemented as a NEW design proposal with an in-memory Fitness sample. This bounded exception supersedes earlier blanket UI pauses; it does not approve final visuals, persistence or live AI. See [preview evidence](YM-PREVIEW-01_VERIFICATION.md). Earlier dated entries remain history.
 
 

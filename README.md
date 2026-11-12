@@ -49,4 +49,8 @@ SQLite/D1 work is paused; four interrupted draft files are preserved but not wir
 
 ## Current runnable preview — 2026-11-04
 
-APP:YM-PREVIEW-01 delivers a new phone/tablet design proposal and bounded Fitness sample journey. Run `npm ci`, `npm run build`, `npm start`, then open http://127.0.0.1:5174/. Full [commands, walkthrough and Replit handoff](docs/PREVIEW_RUNBOOK.md); [checks and screen-review evidence](docs/YM-PREVIEW-01_VERIFICATION.md). Memory only: refresh resets; no live AI or durable save. The older scaffold-only descriptions above are historical. Supabase/S-01 remains proposed; no cloud setup or persistence. No push/publication.
+APP:YM-PREVIEW-01 delivers a new phone/tablet design proposal and bounded Fitness sample journey. Run `npm ci`, `npm run build`, `npm start`, then open http://127.0.0.1:5174/. Full [commands, walkthrough and Replit handoff](docs/PREVIEW_RUNBOOK.md); [checks and screen-review evidence](docs/YM-PREVIEW-01_VERIFICATION.md). Memory only: refresh resets; no live AI or durable save. The older scaffold-only descriptions above are historical. Supabase/S-01 remains proposed; no cloud setup or persistence. The app and mobile foundation are pushed on `feat/ym-preview-01`; no application deployment/publication is verified.
+
+## Current planning and review
+
+Use `feat/ym-preview-01` for the application; `main` remains the initial README-only baseline pending PR review. See [draft PR #1](https://github.com/kaiwanmirza-blip/you-n-me/pull/1), [pilot and tracker reconciliation](docs/TRACKER_RECONCILIATION.md), and [AI Studio Build brief](docs/GOOGLE_AI_STUDIO_BUILD_PROMPT.md). The [comprehensive handoff](docs/PROJECT_COMPLETE_HANDOFF.md) is a historical November 8 snapshot; newer dated planning records take precedence. Build briefs and pilot targets do not establish implemented capability.

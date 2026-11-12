@@ -1,5 +1,13 @@
 # You&Me master plan — reconciled baseline
 
+## Current repository and delivery status — 2026-11-11
+
+Application preview and Capacitor development foundation are committed in be1f11a on feat/ym-preview-01, verified on GitHub before this documentation closeout. Main remains 74dca7f (README-only); use the feature branch for import. Earlier no-push/uncommitted statements below are dated history. Draft PR #1 is the review boundary, not a deployment or merge.
+
+The November 11 pilot and product amendments are in TRACKER_RECONCILIATION.md and GOOGLE_AI_STUDIO_BUILD_PROMPT.md. They describe requested scope, not completed features. Fitness remains an in-memory sample; Nutrition/live/persistence remain unavailable. Native projects are source preparation, not verified installable builds. Parent YM-02, YM-UX-01 and G-01 remain open; S-01 replacement remains proposed. The historical comprehensive handoff is a November 8 snapshot.
+
+> November 11, 2026 planning update: Kaiwan set a 45-day private web pilot through December 25, 2026 Central, with a minimum of 25 unique activated users. See the [dated pilot checkpoints and activation criteria](TRACKER_RECONCILIATION.md#45-day-private-pilot-schedule). The investor prototype is the first delivery toward that target. Pilot implementation and release gates still apply.
+
 > Current amendment — 2026-11-04: APP:YM-PREVIEW-01 is authorized and implemented as a NEW design proposal with an in-memory Fitness sample. This bounded exception supersedes earlier blanket UI pauses; it does not approve final visuals, persistence or live AI. See [preview evidence](YM-PREVIEW-01_VERIFICATION.md). Earlier dated entries remain history.
 
 
@@ -31,7 +39,7 @@ All milestones below are proposed and unscheduled, not delivery commitments or r
 
 | Milestone | Proposed exit evidence |
 | --- | --- |
-| Private pilot | Consented adult cohort completes core journeys; usability, failures and return usage reviewed; privacy/storage choices approved. |
+| Private pilot | Target December 25, 2026 Central. At least 25 unique activated invitees. Product eligibility is 16+. Initial 18+ recruitment is proposed until teen safeguards and provider terms are reviewed. See the tracker for the updated experience scope and delivery gates. |
 | Product beta | Repeated useful journeys and retention evidence; operational support and data lifecycle tested. |
 | Revenue validation / commercial beta | Test You&Me willingness to pay, pricing and cost-to-serve; define recurring value. Real billing requires a separate approval and implementation scope. |
 | Launch readiness | Quality, accessibility, privacy, support, observability and rollback gates pass; distribution and commercial model approved. |

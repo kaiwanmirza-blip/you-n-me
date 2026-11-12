@@ -1,5 +1,7 @@
 # YM-01 — Product foundation and acceptance
 
+> Product direction update: The [tracker scope amendment](TRACKER_RECONCILIATION.md#experience-and-product-scope-update) and [AI Studio prompt](GOOGLE_AI_STUDIO_BUILD_PROMPT.md) capture the 16+ target, 48-hour guest trial, paid tier and bundle model, and expanded feature roadmap. The historical prototype acceptance cases below describe the earlier slice. Review age assurance, teen safety, provider terms, billing and S-01 before extending real-user acceptance.
+
 > Current amendment — 2026-11-04: APP:YM-PREVIEW-01 is authorized and implemented as a NEW design proposal with an in-memory Fitness sample. This bounded exception supersedes earlier blanket UI pauses; it does not approve final visuals, persistence or live AI. See [preview evidence](YM-PREVIEW-01_VERIFICATION.md). Earlier dated entries remain history.
 
 
