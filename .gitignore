@@ -1,0 +1,22 @@
+node_modules/
+dist/
+dist-api/
+coverage/
+*.tsbuildinfo
+*.log
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+.DS_Store
+
+# Native signing/configuration secrets and outputs
+*.jks
+*.keystore
+*.p12
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist

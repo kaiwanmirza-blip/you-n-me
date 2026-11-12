@@ -1,0 +1,176 @@
+[
+  {
+    "path": "C:\\Users\\kaiwa\\OneDrive\\ALGDGADU\\AI_Life_Coach_Proposal_Presentation.pptx",
+    "bytes": 40277,
+    "sha256": "2f0584da0f7123b6b2ca2141923ef32b7a565dbfa3189838da06b6743ec2ec0f",
+    "media": [],
+    "slides": [
+      {
+        "slide": 1,
+        "text": "AI Life Coach Companion | Empowering Modern Lifestyles Through AI Guidance | By: [Your Name] & [Partner\u2019s Name] | Web, iOS & Android App Proposal"
+      },
+      {
+        "slide": 2,
+        "text": "Vision | An AI-driven personal lifestyle companion for ages 25\u201350. | Acts as a virtual mentor offering personalized guidance in: | - Fitness & Exercise | - Fashion & Grooming | - Skin & Hair Care | - Etiquette & Professional Behavior | - Travel Planning & Lifestyle Curation | Accessible via Web, iOS, and Android."
+      },
+      {
+        "slide": 3,
+        "text": "The Problem | \u2022 Lifestyle advice is fragmented and overwhelming. | \u2022 No personalized, trusted guidance adapted to one\u2019s age and goals. | \u2022 Professionals seek accessible, affordable coaching for wellness and personal development."
+      },
+      {
+        "slide": 4,
+        "text": "The Solution | Introducing an AI-powered Life Coach Avatar \u2014 your 24/7 mentor. | \u2022 Personalized for 25\u201330, 30\u201340, 40\u201350. | \u2022 Delivers tailored guidance and motivation. | \u2022 Combines human empathy with AI intelligence."
+      },
+      {
+        "slide": 5,
+        "text": "Key Features | \u2022 AI Character (Coach Ava) \u2014 relatable and realistic | \u2022 Personalized Coaching Plans | \u2022 Weekly Videos, Lookbooks, Etiquette Tips | \u2022 Interactive Q&A Chat | \u2022 Travel Planner Module | \u2022 Blog & Premium Content Library"
+      },
+      {
+        "slide": 6,
+        "text": "Target Market | \u2022 Demographics: 25\u201350-year-old professionals | \u2022 Regions: North America, Europe, South Asia | \u2022 Market Size: $10B+ wellness and lifestyle industry | \u2022 Trends: Personalization, digital coaching, AI adoption"
+      },
+      {
+        "slide": 7,
+        "text": "Technology & Design Plan | \u2022 Phase 1: Web app (React + Flask/Django backend) | \u2022 Phase 2: iOS (Swift), Android (Kotlin) | \u2022 AI Integration: GPT-based conversational model + video avatar | \u2022 Hosting: AWS or Google Cloud | \u2022 Domain: ai-life-coach.com (example) | \u2022 Design: Figma \u2192 UI/UX \u2192 Launch"
+      },
+      {
+        "slide": 8,
+        "text": "Revenue Model | \u2022 Subscription Plans: |    - Free: Limited access |    - Premium ($9.99/mo): Full AI & video content |    - Elite ($29.99/mo): 1:1 personalization | \u2022 Affiliate partnerships: Fashion, fitness, skincare, travel | \u2022 Ads, sponsorships, and upsells"
+      },
+      {
+        "slide": 9,
+        "text": "Marketing Strategy | \u2022 Phase 1: Social media launch (Instagram, YouTube, TikTok) | \u2022 Phase 2: Influencer collaborations | \u2022 Phase 3: Brand partnerships and SEO | \u2022 Referral program for user growth"
+      },
+      {
+        "slide": 10,
+        "text": "Financials & Funding | \u2022 Domain & Hosting: $200 | \u2022 MVP Development: $15K\u201325K | \u2022 AI Licensing: $3K\u20135K | \u2022 Marketing Launch: $10K\u201320K | \u2022 Projected Revenue: |    - Year 1: $50K\u201375K |    - Year 2: $250K+ with 10K paid subscribers"
+      },
+      {
+        "slide": 11,
+        "text": "Roadmap | \u2022 Month 1: Branding & Prototype | \u2022 Month 2\u20133: Web MVP | \u2022 Month 4\u20136: App Build | \u2022 Month 6: Marketing Launch | \u2022 Month 7+: Partnerships & Monetization"
+      },
+      {
+        "slide": 12,
+        "text": "The Team | \u2022 You: Product Vision & Strategy | \u2022 Partner: Creative & Marketing | \u2022 Tech Lead: Development & AI Integration | \u2022 Advisors: Lifestyle & Fitness Experts"
+      },
+      {
+        "slide": 13,
+        "text": "Call to Action | Let\u2019s co-create the next generation of lifestyle AI. | Seeking: | \u2022 Partnership Alignment | \u2022 Seed Funding | \u2022 Development & Marketing Support | \u201cEmpower lifestyles with AI intelligence and human warmth.\u201d"
+      }
+    ],
+    "slideCanvasEMU": {
+      "cx": "9144000",
+      "cy": "6858000",
+      "type": "screen4x3"
+    },
+    "coreProperties": {
+      "title": null,
+      "subject": null,
+      "creator": null,
+      "keywords": null,
+      "description": "generated using python-pptx",
+      "lastModifiedBy": "Steve Canny",
+      "revision": "1",
+      "created": "2013-01-27T09:14:16Z",
+      "modified": "2013-01-27T09:15:58Z",
+      "category": null
+    }
+  },
+  {
+    "path": "C:\\Users\\kaiwa\\OneDrive\\ALGDGADU\\AI_Life_Coach_Proposal_Presentation_v2.pptx",
+    "bytes": 2579702,
+    "sha256": "11b68b87bd4cce270482279222f5317fd1ee69352645a5cb026800819ed00472",
+    "media": [
+      "ppt/media/image1.png"
+    ],
+    "slides": [
+      {
+        "slide": 1,
+        "text": "AI Life Coach Companion | Empowering Modern Lifestyles Through AI Guidance | By: [Your Name] & [Partner\u2019s Name] | Web, iOS & Android App Proposal"
+      },
+      {
+        "slide": 2,
+        "text": "Vision | An AI-driven personal lifestyle companion for ages 25\u201350. | Acts as a virtual mentor offering personalized guidance in: | - Fitness & Exercise | - Fashion & Grooming | - Skin & Hair Care | - Etiquette & Professional Behavior | - Travel Planning & Lifestyle Curation | Accessible via Web, iOS, and Android."
+      },
+      {
+        "slide": 3,
+        "text": "The Problem | \u2022 Lifestyle advice is fragmented and overwhelming. | \u2022 No personalized, trusted guidance adapted to one\u2019s age and goals. | \u2022 Professionals seek accessible, affordable coaching for wellness and personal development."
+      },
+      {
+        "slide": 4,
+        "text": "The Solution | Introducing an AI-powered Life Coach Avatar \u2014 your 24/7 mentor. | \u2022 Personalized for 25\u201330, 30\u201340, 40\u201350. | \u2022 Delivers tailored guidance and motivation. | \u2022 Combines human empathy with AI intelligence."
+      },
+      {
+        "slide": 5,
+        "text": "Key Features | \u2022 AI Character (Coach Ava) \u2014 relatable and realistic | \u2022 Personalized Coaching Plans | \u2022 Weekly Videos, Lookbooks, Etiquette Tips | \u2022 Interactive Q&A Chat | \u2022 Travel Planner Module | \u2022 Blog & Premium Content Library"
+      },
+      {
+        "slide": 6,
+        "text": "Target Market | \u2022 Demographics: 25\u201350-year-old professionals | \u2022 Regions: North America, Europe, South Asia | \u2022 Market Size: $10B+ wellness and lifestyle industry | \u2022 Trends: Personalization, digital coaching, AI adoption"
+      },
+      {
+        "slide": 7,
+        "text": "Technology & Design Plan | \u2022 Phase 1: Web app (React + Flask/Django backend) | \u2022 Phase 2: iOS (Swift), Android (Kotlin) | \u2022 AI Integration: GPT-based conversational model + video avatar | \u2022 Hosting: AWS or Google Cloud | \u2022 Domain: ai-life-coach.com (example) | \u2022 Design: Figma \u2192 UI/UX \u2192 Launch"
+      },
+      {
+        "slide": 8,
+        "text": "Revenue Model | \u2022 Subscription Plans: |    - Free: Limited access |    - Premium ($9.99/mo): Full AI & video content |    - Elite ($29.99/mo): 1:1 personalization | \u2022 Affiliate partnerships: Fashion, fitness, skincare, travel | \u2022 Ads, sponsorships, and upsells"
+      },
+      {
+        "slide": 9,
+        "text": "Marketing Strategy | \u2022 Phase 1: Social media launch (Instagram, YouTube, TikTok) | \u2022 Phase 2: Influencer collaborations | \u2022 Phase 3: Brand partnerships and SEO | \u2022 Referral program for user growth"
+      },
+      {
+        "slide": 10,
+        "text": "Financials & Funding | \u2022 Domain & Hosting: $200 | \u2022 MVP Development: $15K\u201325K | \u2022 AI Licensing: $3K\u20135K | \u2022 Marketing Launch: $10K\u201320K | \u2022 Projected Revenue: |    - Year 1: $50K\u201375K |    - Year 2: $250K+ with 10K paid subscribers"
+      },
+      {
+        "slide": 11,
+        "text": "Roadmap | \u2022 Month 1: Branding & Prototype | \u2022 Month 2\u20133: Web MVP | \u2022 Month 4\u20136: App Build | \u2022 Month 6: Marketing Launch | \u2022 Month 7+: Partnerships & Monetization"
+      },
+      {
+        "slide": 12,
+        "text": "The Team | \u2022 You: Product Vision & Strategy | \u2022 Partner: Creative & Marketing | \u2022 Tech Lead: Development & AI Integration | \u2022 Advisors: Lifestyle & Fitness Experts"
+      },
+      {
+        "slide": 13,
+        "text": "Call to Action | Let\u2019s co-create the next generation of lifestyle AI. | Seeking: | \u2022 Partnership Alignment | \u2022 Seed Funding | \u2022 Development & Marketing Support | \u201cEmpower lifestyles with AI intelligence and human warmth.\u201d"
+      },
+      {
+        "slide": 14,
+        "text": "Web & Mobile App Mock UI Concepts | The app interface is designed for simplicity and engagement: | \u2022 **Homepage:** Personalized greeting from the AI coach with quick links to Fitness, Fashion, Travel, and Care sections. | \u2022 **Coach Chat:** Conversational window where users can talk to their AI mentor, ask questions, and receive tips. | \u2022 **Weekly Plan Dashboard:** Displays exercise schedules, outfit suggestions, and wellness tasks. | \u2022 **Media Hub:** Access to weekly videos, blog posts, and photo galleries. | \u2022 **Mobile Layout:** Consistent with web app \u2014 optimized for quick navigation and daily engagement."
+      }
+    ],
+    "slideCanvasEMU": {
+      "cx": "9144000",
+      "cy": "6858000",
+      "type": "screen4x3"
+    },
+    "coreProperties": {
+      "title": null,
+      "subject": null,
+      "creator": null,
+      "keywords": null,
+      "description": "generated using python-pptx",
+      "lastModifiedBy": "Kaiwan Mirza",
+      "revision": "1",
+      "created": "2013-01-27T09:14:16Z",
+      "modified": "2025-11-04T22:44:19Z",
+      "category": null
+    },
+    "embeddedImage": {
+      "member": "ppt/media/image1.png",
+      "referencedBySlides": [
+        1,
+        14
+      ],
+      "extractedCopy": "docs/references/proposal-v2-image1.png",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "sha256": "829d9d6c43874745da1dd9caf9a9631b5ef708f43f89eae30d5bc0d40b7f7def",
+      "visualInspection": "Proposal cover portrait with embedded title/byline/domain; not an exercise mockup; no Jane/Kay approval established"
+    }
+  }
+]
