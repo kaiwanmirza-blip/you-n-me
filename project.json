@@ -8,7 +8,7 @@
   "inspectedCommit": "72b116abfffd2b21eea91ae96ddade26dc95044c",
   "dashboardUrl": "https://youme-build-command-center.newclay.chatgpt.site",
   "dashboardSourceRepository": null,
-  "dashboardSynchronization": "Evidence captures persisted at revisions 23 and 24; canonical task/release edits pending dashboard sign-in; partial synchronization only",
+  "dashboardSynchronization": "v0.8 evidence receipt persisted at revision 25; canonical task/release statuses unchanged",
   "currentMilestone": "v0.8.0 investor prototype (local sample milestone; not deployed)",
   "privatePilot": {
     "status": "planned",
@@ -160,12 +160,12 @@
   "repositoryState": {
     "branch": "feat/ym-v0.8",
     "baseCommit": "74dca7f36e0ae6e4ae31ef55f3ed457a1b36e6de",
-    "newCommit": "92238939b9a79ad307cf5ec1dfd682b3b149926e",
-    "githubSynchronization": "v0.8 commit/push authorized; actual receipt follows execution. v0.7.4 branch is preserved.",
-    "dashboardSynchronization": "Evidence captures persisted at revisions 23 and 24; canonical task/release edits pending dashboard sign-in; partial synchronization only",
+    "newCommit": "881f7ece0a9d529c99da7e5760f76f7d9b093595",
+    "githubSynchronization": "v0.8 implementation 881f7ece0a9d529c99da7e5760f76f7d9b093595 pushed and verified by git ls-remote; documentation receipt commit follows. Remote v0.7.4 branch verified unchanged at 72b116a.",
+    "dashboardSynchronization": "v0.8 evidence receipt persisted at revision 25; canonical task/release statuses unchanged",
     "checkpointCommit": "acbe3d8db3bc00b8761281bca0bdb7b00fe28525",
     "checkpointIdentity": "Codex <codex@localhost>; command-local identity, no global config",
-    "implementationChanges": "Pre-existing v0.7.4 integration preserved exactly. Synced public bundles explicitly authorized for staging. Inactive SQLite drafts unchanged and excluded from new commit.",
+    "implementationChanges": "Preserved Antigravity frontend and public assets; additive persona contracts/token route plus prior backend upgrades; explicitly requested mobile sync completed.",
     "preservedPreviewBranch": {
       "branch": "feat/ym-preview-01",
       "commit": "72b116abfffd2b21eea91ae96ddade26dc95044c",
@@ -263,11 +263,11 @@
     "fullMapping": "Fresh revision17 application reconciliation supplies partial overlaps; no renumbering"
   },
   "dashboardObservation": {
-    "revision": 24,
-    "updatedAt": "2026-11-12T05:09:33.987Z",
+    "revision": 25,
+    "updatedAt": "2026-11-12T09:52:12.571Z",
     "readOnly": false,
-    "source": "Command Center revision 22 read; integration capture revision 23 and pushed commit receipt revision 24",
-    "taskStatus": "Capture does not complete tasks or release records"
+    "source": "Command Center plan revision 24 read, then v0.8 delivery capture revision 25",
+    "taskStatus": "Evidence capture does not complete tasks or change release records"
   },
   "dashboardSourceAccess": {
     "metadata": "accessible; current saved Site version 7; owner role",
@@ -411,14 +411,14 @@
       "Single check-in star delta only; no score persistence or UI integration",
       "Frontend/native paths preserved; concurrent edits left untouched"
     ],
-    "synchronization": "Local only; no commit, push or dashboard sync",
+    "synchronization": "Carried into v0.8 implementation commit 881f7ec and dashboard revision 25 receipt; earlier local-only report preserved in session history",
     "nextAction": "Review additive contract defaults; separately authorize frontend integration, persistence or live-provider work",
     "verificationHistory": "Intermediate full-suite/typecheck failure in concurrent src/App.test.tsx was fixed outside this task; final rerun passed."
   },
   "v08Milestone": {
     "version": "0.8.0",
     "branch": "feat/ym-v0.8",
-    "status": "Implemented and locally verified; synchronization receipts pending",
+    "status": "Implemented, locally verified, committed and pushed; dashboard evidence receipt captured",
     "features": [
       "Ten global heritages and strict wardrobe selection contracts",
       "Free initial persona set; one-token restyle/animate; 10/day cap and 60-watch redemption",
@@ -439,6 +439,13 @@
       "Repository delivery/documentation"
     ],
     "actualExecutor": "Codex in this chat; no subagents. Prior frontend by Antigravity per user report; source/public bytes preserved.",
-    "synchronization": "Pending authorized new-branch push and evidence receipt; no task completion inferred"
+    "synchronization": "GitHub implementation SHA verified; Command Center receipt revision 25; no merge/deployment",
+    "implementationCommit": "881f7ece0a9d529c99da7e5760f76f7d9b093595",
+    "dashboardReceipt": {
+      "revision": 25,
+      "recordId": "UPD-89ff2357-77bc-4d99-82b0-c0d1b14f473f",
+      "state": "Captured",
+      "scope": "Reported evidence only; no task/release status mutation"
+    }
   }
 }
