@@ -1,10 +1,24 @@
 # You&Me master plan — reconciled baseline
 
+## APP:YM-PREVIEW-02 — v0.7.4 integration closeout (2026-11-11 Central)
+
+Current evidence supersedes earlier statements that Nutrition is unavailable **for sample preview scope only**. The integrated source existed before this synchronization task. It contains working in-memory Fitness and Nutrition samples, a demo-controlled 48-hour guest trial state machine, six bundle offerings with simulated Basic/Plus/Pro AI recall tiers, proposed 70/20/10 Habit Stars, Jane/Kay GuideAvatar SVG personas with six task wardrobes, and Explore previews for Fashion, Local Date Night, Instagram share, Friends & Challenges, and FAQs/45-Day Pilot table. Recall tiers, trial timing controls, prices and scoring examples are simulations/proposals, not actual AI memory, elapsed-time entitlement enforcement, paid subscriptions or approved commercial terms.
+
+Fresh checks: `npm run typecheck` passed; `npm test` passed **55/55 across 8 files**; `npm run mobile:verify` passed against existing dist and both synced platform bundles. `npm run build` passed per Kaiwan's incoming report, not rerun here. No npm ci, build, native sync, UI edits or process restart in this task; port 5174 is left untouched. Native asset verification does not prove native compilation/runtime, physical-device or screen acceptance. The full AC-01–AC-18 gate remains open, especially live generation, durable save/reload, identity/isolation and deletion.
+
+Parent YM-02 stays **In progress** (A/B accepted locally, C paused pending S-01 replacement review, D To do). YM-UX-01 stays **Open**; this is a new design proposal, not a recovered approved reference. G-01 remains **pending review**; SVG wardrobes do not close adaptive-guide behavior. S-01 remains **Supabase replacement proposed / SQLite implementation paused**. No persistence, provider calls, real accounts/payments, deployment, native distribution or pilot launch is delivered by this closeout.
+
+Responsibility: Engineering POD / repository integration verification and documentation. Actual executor this task: Codex in this chat, no subagents. Existing integration is user-reported prior work, not code authored by this synchronization executor.
+
+Dashboard evidence capture succeeded at **revision 23**, record `UPD-32d57677-097a-45a3-8257-4fe4c595917c`. This is reported local evidence captured for review, not independent dashboard testing or task/release completion. Connector writes support captures only; dashboard UI requires sign-in. Canonical task-card and release-record reconciliation remains pending. Preserve APP/DASH IDs and the planned private-pilot release; do not mark it released.
+
+> Earlier snapshots below are preserved as dated history; the closeout above is the current preview status.
+
 ## Current repository and delivery status — 2026-11-11
 
 Application preview and Capacitor development foundation are committed in be1f11a on feat/ym-preview-01, verified on GitHub before this documentation closeout. Main remains 74dca7f (README-only); use the feature branch for import. Earlier no-push/uncommitted statements below are dated history. Draft PR #1 is the review boundary, not a deployment or merge.
 
-The November 11 pilot and product amendments are in TRACKER_RECONCILIATION.md and GOOGLE_AI_STUDIO_BUILD_PROMPT.md. They describe requested scope, not completed features. Fitness remains an in-memory sample; Nutrition/live/persistence remain unavailable. Native projects are source preparation, not verified installable builds. Parent YM-02, YM-UX-01 and G-01 remain open; S-01 replacement remains proposed. The historical comprehensive handoff is a November 8 snapshot.
+The November 11 pilot and product amendments are in TRACKER_RECONCILIATION.md and GOOGLE_AI_STUDIO_BUILD_PROMPT.md. They describe requested scope, not completed features. Fitness and Nutrition now have in-memory samples in APP:YM-PREVIEW-02; live generation and persistence remain unavailable. Native projects are source preparation, not verified installable builds. Parent YM-02, YM-UX-01 and G-01 remain open; S-01 replacement remains proposed. The historical comprehensive handoff is a November 8 snapshot.
 
 > November 11, 2026 planning update: Kaiwan set a 45-day private web pilot through December 25, 2026 Central, with a minimum of 25 unique activated users. See the [dated pilot checkpoints and activation criteria](TRACKER_RECONCILIATION.md#45-day-private-pilot-schedule). The investor prototype is the first delivery toward that target. Pilot implementation and release gates still apply.
 

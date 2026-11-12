@@ -1,6 +1,20 @@
 # You&Me application tracker reconciliation
 
-Tracker snapshot at revision 20. The hosted ledger reports 72 tasks and 7 completed. The two repository evidence captures are in review. The rows below describe application status and supply candidate card details. APP and DASH identifiers retain their original meanings. Source baseline is be1f11a on feat/ym-preview-01. Historical verification is from the linked evidence.
+## APP:YM-PREVIEW-02 — v0.7.4 integration closeout (2026-11-11 Central)
+
+Current evidence supersedes earlier statements that Nutrition is unavailable **for sample preview scope only**. The integrated source existed before this synchronization task. It contains working in-memory Fitness and Nutrition samples, a demo-controlled 48-hour guest trial state machine, six bundle offerings with simulated Basic/Plus/Pro AI recall tiers, proposed 70/20/10 Habit Stars, Jane/Kay GuideAvatar SVG personas with six task wardrobes, and Explore previews for Fashion, Local Date Night, Instagram share, Friends & Challenges, and FAQs/45-Day Pilot table. Recall tiers, trial timing controls, prices and scoring examples are simulations/proposals, not actual AI memory, elapsed-time entitlement enforcement, paid subscriptions or approved commercial terms.
+
+Fresh checks: `npm run typecheck` passed; `npm test` passed **55/55 across 8 files**; `npm run mobile:verify` passed against existing dist and both synced platform bundles. `npm run build` passed per Kaiwan's incoming report, not rerun here. No npm ci, build, native sync, UI edits or process restart in this task; port 5174 is left untouched. Native asset verification does not prove native compilation/runtime, physical-device or screen acceptance. The full AC-01–AC-18 gate remains open, especially live generation, durable save/reload, identity/isolation and deletion.
+
+Parent YM-02 stays **In progress** (A/B accepted locally, C paused pending S-01 replacement review, D To do). YM-UX-01 stays **Open**; this is a new design proposal, not a recovered approved reference. G-01 remains **pending review**; SVG wardrobes do not close adaptive-guide behavior. S-01 remains **Supabase replacement proposed / SQLite implementation paused**. No persistence, provider calls, real accounts/payments, deployment, native distribution or pilot launch is delivered by this closeout.
+
+Responsibility: Engineering POD / repository integration verification and documentation. Actual executor this task: Codex in this chat, no subagents. Existing integration is user-reported prior work, not code authored by this synchronization executor.
+
+Dashboard evidence capture succeeded at **revision 23**, record `UPD-32d57677-097a-45a3-8257-4fe4c595917c`. This is reported local evidence captured for review, not independent dashboard testing or task/release completion. Connector writes support captures only; dashboard UI requires sign-in. Canonical task-card and release-record reconciliation remains pending. Preserve APP/DASH IDs and the planned private-pilot release; do not mark it released.
+
+> Earlier snapshots below are preserved as dated history; the closeout above is the current preview status.
+
+Historical tracker snapshot at revision 20 (superseded by the closeout above). The hosted ledger reports 72 tasks and 7 completed. The two repository evidence captures are in review. The rows below describe application status and supply candidate card details. APP and DASH identifiers retain their original meanings. Source baseline is be1f11a on feat/ym-preview-01. Historical verification is from the linked evidence.
 
 ## 45-day private pilot schedule
 
@@ -100,3 +114,18 @@ Every acceptance scenario below remains backlog for integrated execution. Previe
 | AC-16 | Try under-18/unknown eligibility, unknown allergies, excluded ingredients/movements and a medical-treatment request. | Personal live eligibility and Nutrition acknowledgement rules hold; excluded content is rejected; unsupported medical requests receive scope guidance, not a prescription. |
 | AC-17 | Edit an unsupported demo combination; switch demo to live explicitly; open a saved sample while live is selected. | No silent call/fallback; unsupported edit is explained; saved sample retains original mode/provenance. |
 | AC-18 | Create two isolated browser sessions; attempt cross-session reads/updates/deletes; clear one session; restart service and reload the other. | No cross-session access; remaining session persists; deleted session cannot recover old records. Exercise SQLite and D1-compatible paths. Inspect browser persistence for absence of durable profiles/plans. |
+
+## APP:YM-PREVIEW-02 evidence and non-destructive task crosswalk
+
+| Delivered local surface | Source / verification | DASH relationship and remaining acceptance |
+| --- | --- | --- |
+| Welcome, guide choice, trial simulation and bundles | src/App.tsx; src/experienceData.ts; typecheck | Partial onboarding/entitlement overlap; do not complete broader accounts or durable entitlement tasks. Trial transitions are source-inspected, not independently UI-tested in this closeout. |
+| Fitness samples and completion/undo | src/fitnessPreview.ts; existing Fitness tests | DASH YM-04.1 guided/demo overlap retained; live Fitness and full investor acceptance open. |
+| Nutrition samples, scaling, substitutions, shopping and completion/undo | src/nutritionPreview.ts; src/NutritionPlannerView.tsx; six tests in src/nutritionPreview.test.ts | APP YM-06 partial implementation evidence; exact DASH Nutrition card mapping not newly verified, no ID invented or card completed. |
+| Habit Stars and six task wardrobes | src/experienceData.ts; src/GuideAvatar.tsx; scoring/wardrobe test | Scoring proposal and SVG presentation only; G-01 and final artwork/visual review remain open. |
+| Explore previews and pilot table | src/SecondaryViews.tsx; src/navigation.ts; typecheck | Fashion/date/social/share previews only. Pilot table is a handoff, not enrollment or release evidence. |
+| Synced native public assets | android/app/src/main/assets/public; ios/App/App/public; mobile:verify | DASH YM-08.2 browser/device acceptance overlap only; no native compilation or physical-device result. |
+
+Git staging boundary: integrated src files, the two explicitly authorized ignored public-asset directories, and six requested planning files only. Root PROJECT_COMPLETE_HANDOFF.md, Project_tracker, ZIP archive and four paused SQLite draft paths are excluded from this commit. The SQLite drafts already exist in prior history; exclusion does not remove them from history. Generated dist/dist-api, credentials, native signing/build outputs and ignored native configuration files are not staged. Existing mobile public assets are the authorized generated-artifact exception.
+
+Hosted sync receipt: revision 23 capture above. Remaining action: authenticated dashboard task/release editing using this crosswalk and the eventual pushed commit receipt. Capture alone does not change the 72-task / 7-completed counts or independently verify application behavior.

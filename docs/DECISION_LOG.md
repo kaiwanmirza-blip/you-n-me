@@ -1,5 +1,19 @@
 # Decision log
 
+## APP:YM-PREVIEW-02 — v0.7.4 integration closeout (2026-11-11 Central)
+
+Current evidence supersedes earlier statements that Nutrition is unavailable **for sample preview scope only**. The integrated source existed before this synchronization task. It contains working in-memory Fitness and Nutrition samples, a demo-controlled 48-hour guest trial state machine, six bundle offerings with simulated Basic/Plus/Pro AI recall tiers, proposed 70/20/10 Habit Stars, Jane/Kay GuideAvatar SVG personas with six task wardrobes, and Explore previews for Fashion, Local Date Night, Instagram share, Friends & Challenges, and FAQs/45-Day Pilot table. Recall tiers, trial timing controls, prices and scoring examples are simulations/proposals, not actual AI memory, elapsed-time entitlement enforcement, paid subscriptions or approved commercial terms.
+
+Fresh checks: `npm run typecheck` passed; `npm test` passed **55/55 across 8 files**; `npm run mobile:verify` passed against existing dist and both synced platform bundles. `npm run build` passed per Kaiwan's incoming report, not rerun here. No npm ci, build, native sync, UI edits or process restart in this task; port 5174 is left untouched. Native asset verification does not prove native compilation/runtime, physical-device or screen acceptance. The full AC-01–AC-18 gate remains open, especially live generation, durable save/reload, identity/isolation and deletion.
+
+Parent YM-02 stays **In progress** (A/B accepted locally, C paused pending S-01 replacement review, D To do). YM-UX-01 stays **Open**; this is a new design proposal, not a recovered approved reference. G-01 remains **pending review**; SVG wardrobes do not close adaptive-guide behavior. S-01 remains **Supabase replacement proposed / SQLite implementation paused**. No persistence, provider calls, real accounts/payments, deployment, native distribution or pilot launch is delivered by this closeout.
+
+Responsibility: Engineering POD / repository integration verification and documentation. Actual executor this task: Codex in this chat, no subagents. Existing integration is user-reported prior work, not code authored by this synchronization executor.
+
+Dashboard evidence capture succeeded at **revision 23**, record `UPD-32d57677-097a-45a3-8257-4fe4c595917c`. This is reported local evidence captured for review, not independent dashboard testing or task/release completion. Connector writes support captures only; dashboard UI requires sign-in. Canonical task-card and release-record reconciliation remains pending. Preserve APP/DASH IDs and the planned private-pilot release; do not mark it released.
+
+> Earlier snapshots below are preserved as dated history; the closeout above is the current preview status.
+
 ## November 11 product and repository amendment
 
 The November 11 session log and TRACKER_RECONCILIATION.md record Kaiwan's requested 45-day pilot through December 25, minimum 25 activated users, 16+ product audience, 48-hour trial, tier/bundle direction and expanded experience roadmap. These supersede older unscheduled-pilot and audience direction only as planning requirements; they do not establish implemented accounts, billing, Nutrition, live AI or release readiness. Prices, scoring weights, memory details and initial 18+ recruitment remain proposals. Teen safety, provider eligibility, real-user storage and payment activation require their separate reviews. S-01 and G-01 remain pending.
