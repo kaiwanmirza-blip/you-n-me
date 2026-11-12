@@ -8,7 +8,7 @@
   "inspectedCommit": "bcb297acfd41b8acaac75e301d52128213f2697e",
   "dashboardUrl": "https://youme-build-command-center.newclay.chatgpt.site",
   "dashboardSourceRepository": null,
-  "dashboardSynchronization": "Evidence captured at revision 23; task/release edits pending authenticated dashboard access; no full synchronization claimed",
+  "dashboardSynchronization": "Evidence captures persisted at revisions 23 and 24; canonical task/release edits pending dashboard sign-in; partial synchronization only",
   "currentMilestone": "investor prototype",
   "privatePilot": {
     "status": "planned",
@@ -160,9 +160,9 @@
   "repositoryState": {
     "branch": "feat/ym-preview-01",
     "baseCommit": "74dca7f36e0ae6e4ae31ef55f3ed457a1b36e6de",
-    "newCommit": null,
-    "githubSynchronization": "Baseline bcb297a; APP:YM-PREVIEW-02 commit/push authorized, actual receipt reported after execution; no merge",
-    "dashboardSynchronization": "Evidence captured at revision 23; task/release edits pending authenticated dashboard access; no full synchronization claimed",
+    "newCommit": "92238939b9a79ad307cf5ec1dfd682b3b149926e",
+    "githubSynchronization": "Integration commit 92238939b9a79ad307cf5ec1dfd682b3b149926e pushed to origin feat/ym-preview-01 and verified with git ls-remote; documentation receipt commit follows. No merge/deployment.",
+    "dashboardSynchronization": "Evidence captures persisted at revisions 23 and 24; canonical task/release edits pending dashboard sign-in; partial synchronization only",
     "checkpointCommit": "acbe3d8db3bc00b8761281bca0bdb7b00fe28525",
     "checkpointIdentity": "Codex <codex@localhost>; command-local identity, no global config",
     "implementationChanges": "Pre-existing v0.7.4 integration preserved exactly. Synced public bundles explicitly authorized for staging. Inactive SQLite drafts unchanged and excluded from new commit."
@@ -258,10 +258,10 @@
     "fullMapping": "Fresh revision17 application reconciliation supplies partial overlaps; no renumbering"
   },
   "dashboardObservation": {
-    "revision": 23,
-    "updatedAt": "2026-11-12T05:06:51.836Z",
+    "revision": 24,
+    "updatedAt": "2026-11-12T05:09:33.987Z",
     "readOnly": false,
-    "source": "Command Center plan revision 22 then capture receipt revision 23",
+    "source": "Command Center revision 22 read; integration capture revision 23 and pushed commit receipt revision 24",
     "taskStatus": "Capture does not complete tasks or release records"
   },
   "dashboardSourceAccess": {
@@ -365,10 +365,12 @@
     ],
     "preservation": "No modifications under src/android/ios; no preview process restart",
     "dashboardReceipt": {
-      "revision": 23,
-      "recordId": "UPD-32d57677-097a-45a3-8257-4fe4c595917c",
+      "revision": 24,
+      "recordId": "UPD-b21c342e-d000-4755-b412-1fffd2dc1ffb",
       "state": "Captured",
-      "scope": "Reported evidence only; task and release mutations pending"
-    }
+      "scope": "Reported evidence only; task and release mutations pending",
+      "integrationCaptureId": "UPD-32d57677-097a-45a3-8257-4fe4c595917c"
+    },
+    "commit": "92238939b9a79ad307cf5ec1dfd682b3b149926e"
   }
 }
